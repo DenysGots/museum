@@ -1,3 +1,7 @@
+/** {
+  outline: 1px solid red; 
+}*/
+
 .html {
 	height: 100%; 
 }
@@ -14,6 +18,14 @@
 }
 
 .main {
+/* TODO: move background from main to other pages*/
+
+/*  background-attachment: fixed;
+  background-image: url(../images/Background/dippy3.jpg); 
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover; */
+
   box-shadow: 3px 0px 7px 9px rgba(0,0,0,0.17);
   height: auto; 
   margin: 0 auto; 
@@ -24,7 +36,7 @@
   background-color: #f6f6f6; 
 } 
 
-/*Button */
+/* Buttons */
 
 .button {
   appearance: none; 
@@ -95,6 +107,7 @@
 } 
 
 /* Forms */
+
 .input {
   color: #2e2e2e;
   font-family: 'Roboto', Helvetica, Arial, Sans-Serif; 
@@ -107,6 +120,10 @@
 .input:focus {
   outline: none;
 } 
+
+/*.input:valid {
+  background-color: #b0e0e6; 
+}*/
 
 .input:invalid {
   background-color: #ffc0cb; 
@@ -169,10 +186,11 @@
   color: rgb(40, 40, 40) ; 
 }
 
-/*Landing page*/ 
+/* Landing page */ 
 
 .landing-page {
   position: absolute; 
+/*  position: relative;*/
   top: 0; 
   left: 0; 
   width: 100%; 
@@ -225,7 +243,13 @@
 }
 
 .landing-page_slide {
-  transition: opacity 1.0s, background-position 9.0s, background-position-x 9.0s, background-position-y 9.0s;
+/*  background-position: center; 
+  transition: opacity 1.0s; */
+
+/*  background-position: 0% 0%; */
+/*  TODO: works, but need adjustment to move diagonal*/ 
+  transition: opacity 1.0s, background-position 20.0s;
+  
   background-repeat: no-repeat; 
   background-size: cover;
   display: block;
@@ -242,6 +266,7 @@
 .landing-page_slide-visible {
   opacity: 1;
   z-index: 90;
+  /*background-position: 50% 50%;*/ 
 } 
 
 .landing-page_content {
@@ -342,7 +367,7 @@
   background-image: url(../images/LandingPage/landing-page10.jpg); 
 }
 
-/*Header*/
+/* Header */
 
 .header {
   align-content: space-between;
@@ -365,7 +390,7 @@
   } 
 }
 
-/*Header logo*/
+/* Header logo */
 
 .header_logo {
   color: #a21029; 
@@ -394,7 +419,7 @@
   text-transform: uppercase;
 } 
 
-/*Header navigation window*/
+/* Header navigation window */
 
 .header_nav-container {
   width: auto; 
@@ -519,7 +544,7 @@
   color: #a21029; 
 } 
 
-/*Header search window*/
+/* Header search window */
 
 .header_search {
   margin-right: 20px;
@@ -589,171 +614,18 @@
   color: #0b5f79; 
 }
 
-/*Main page*/
+/* Main page */
 
 .main-page {
   min-height: 100%; 
 }
 
-/*Main page slider*/
-
-.slider {
-  align-content: center;
-  align-items: center; 
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  display: flex; 
-  height: 300px; 
-  justify-content: space-between; 
-  margin: 25px; 
-  width: calc(100% - 50px); 
-  box-shadow: 7px 7px 7px 2px rgba(0,0,0,0.7);
-  position: relative; 
-  overflow: hidden;
-} 
-
-.slider_slides-container {
-  position: absolute;
-  width: 300%; 
-  height: 100%; 
-  left: -100%;
-  margin: 0;
-  padding: 0; 
-  align-content: center;
-  align-items: center; 
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  display: flex; 
-  justify-content: space-between; 
-  overflow: hidden;
-}
-
-.slide {
-  position: absolute;
-  width: 100%; 
-  height: 100%; 
-  display: inline-block;
-  margin: 0;
-  padding: 0; 
-  transition: left 1.0s ease-in-out; 
-  z-index: 10; 
-} 
-
-.slide-current {
-  left: 0; 
-}
-
-.slide-prev {
-  left: -100%;
-} 
-
-.slide-next {
-  left: 100%;
-}
-
-.slide-hidden {
-  left: 100%;
-}
-
-.slide-1 {
-  background-image: url(../images/MainPage/splash-screen-1.bmp);
-}
-
-.slide-2 {
-  background-image: url(../images/MainPage/splash-screen-2.bmp);
-}
-
-.slide-3 {
-  background-image: url(../images/MainPage/splash-screen-3.bmp);
-}
-
-.slide-4 {
-  background-image: url(../images/MainPage/splash-screen-4.bmp);
-}
-
-.slide-5 {
-  background-image: url(../images/MainPage/splash-screen-5.bmp);
-}
-
-.slide-6 {
-  background-image: url(../images/MainPage/splash-screen-6.bmp);
-}
-
-.slide-7 {
-  background-image: url(../images/MainPage/splash-screen-7.bmp);
-}
-
-.arrow-container {
-  align-content: center;
-  align-items: center; 
-  background-color: rgba(235,235,235,0.2); 
-  border-radius: 50%; 
-  display: flex; 
-  height: 50px; 
-  justify-content: center; 
-  margin: 0 5px; 
-  width: 50px; 
-  z-index: 20; 
-} 
-
-.arrow-container:hover {
-  background-color: rgba(125,125,125,0.5); 
-  transition: ease-in-out 0.1s;
-}
-
-.arrow-container:active {
-  background-color: rgba(105,105,105,0.7); 
-  border: 1px solid #373737;
-  box-shadow: inset 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-  transition: ease-in-out 0.05s;
-}
-
-.right-slide-arrow {
-  border: solid #16631c;
-  border-width: 0 0.4em 0.4em 0;
-  display: inline-block;
-  padding: .40em;
-  margin-left: -0.2em;
-  transform:rotate(-45deg);
-} 
-
-.left-slide-arrow {
-  border: solid #16631c;
-  border-width: 0 0.4em 0.4em 0;
-  display: inline-block;
-  padding: .40em;
-  margin-left: 0.2em;
-  transform:rotate(135deg);
-} 
-
-.arrow-container:hover .right-slide-arrow, 
-.arrow-container:active .right-slide-arrow {
-  border: solid #3BFD49;
-  border-width: 0 0.4em 0.4em 0;
-  display: inline-block;
-  padding: .40em;
-  margin-left: 0.2em;
-  transform:rotate(-45deg);
-  transition: ease-in-out 0.1s;
-} 
- 
-.arrow-container:hover .left-slide-arrow, 
-.arrow-container:active .left-slide-arrow {
-  border: solid #3BFD49;
-  border-width: 0 0.4em 0.4em 0;
-  display: inline-block;
-  padding: .40em;
-  margin-left: -0.2em;
-  transform:rotate(135deg);
-  transition: ease-in-out 0.1s;
-} 
-
-/*Main page sections*/
+/* Main page sections */
 
 .main-page_section {
   height: 75px; 
+/*  height: auto; 
+  min-height: 60px; */
   background-color: rgba(248,248,216,0.6); 
   border: 1px solid #e6e675;
   border-radius: 5px; 
@@ -795,6 +667,26 @@
   height: auto; 
   transition: all 0.5s ease-in-out;
 } 
+
+/*.exhibitions-section {
+  width: calc(100% - 40px);
+}
+
+.events-section {
+  width: calc(100% - 40px);
+}
+
+.tours-section {
+  width: calc(100% - 40px);
+}
+
+.gallery-section {
+  width: calc(100% - 40px);
+}
+
+.location-section {
+  width: calc(100% - 40px);
+} */
 
 /*Main page sections animation*/
 
@@ -895,6 +787,7 @@
 
 .main-page_section-information {
   width: 65%; 
+/*  border-left: 0.5px solid #7e7662; */
   border: solid #7e7662;
   border-style: double;
   border-radius: 5px; 
@@ -916,6 +809,7 @@
   justify-content: space-between;
   transition: ease-in-out 0.2s;
   border: 0.5px solid rgba(248,248,216,0.6); 
+  /*margin-left: 10px;*/
 } 
 
 .main-page_section-exhibit-preview:nth-of-type(2n) {
@@ -1001,7 +895,7 @@
   background-image: url(../images/Events/The-Titanosaur/mainpage-event-preivew.jpg); 
 }
 
-/*Contacts section*/
+/* Contacts section */
 
 .map-container {
   display: flex;
@@ -1015,7 +909,7 @@
   height: 450px;
 }
 
-/*Guided tours section*/
+/* Guided tours section */
 
 .admissions-page_button {
   width: auto; 
@@ -1131,7 +1025,7 @@
   color: #0b5f79;
 }
 
-/*Gallery section*/
+/* Gallery section */
 
 .gallery_filters {
   margin: 20px; 
@@ -1144,18 +1038,27 @@
   -webkit-column-gap: 0.5rem; 
   column-count: auto;
   column-rule-width: 0.5rem;
+
+/*  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: center; 
+  justify-content: space-around; */
 } 
 
 .gallery_image-container {
   margin: 0.5rem; 
   display: inline-block;
   padding: 0; 
+/*  flex: content;
+  margin: 10px;*/
 }
 
 .gallery_image {
   width: auto;
   height: auto;
   max-width: 200px;
+/*  max-height: 200px; */
   text-align: center;
   border: 1px solid transparent; 
   border-radius: 5px; 
@@ -1196,7 +1099,7 @@
   transform: translate(-50%,-50%);
 }
 
-/*Breadcrumbs*/
+/* Breadcrumbs */
 
 .breadcrumbs {
   margin: 20px; 
@@ -1221,7 +1124,7 @@
   transform:rotate(-45deg);
 }
 
-/*Site pages*/
+/* Secondary pages */
 
 .site-section {
   margin: 0; 
@@ -1272,6 +1175,7 @@
   width: auto;
   max-width: 300px;
   height: auto;
+/*  max-height: 200px;*/
   text-align: center;
   border: 2px solid #dcdcdc; 
   border-radius: 5px; 
@@ -1300,10 +1204,20 @@
   margin: 0; 
 } 
 
+.table_row {
+/*  border-top: 1px solid #938d86;
+  border-bottom: 1px solid #938d86;*/
+} 
+
 .table_cell {
   padding: 5px; 
   margin: 0;
 }
+
+.table_cell {
+/*  border-left: 1px solid #938d86;
+  border-right: 1px solid #938d86;*/
+} 
 
 .table_header {
   text-align: center;
@@ -1352,39 +1266,7 @@
   transform:rotate(-45deg);
 }
 
-/* Exhibits and events sections */
-
-.ancient-world-slider {
-  background-image: url(../images/Exhibits/Ancient-world/ancient-world-slider01.jpg);
-} 
-
-.history-of-weapons-slider {
-  background-image: url(../images/Exhibits/History-of-weapons/history-of-weapons-slider01.jpg);
-} 
-
-.human-evolution-slider {
-  background-image: url(../images/Exhibits/Human-Evolution/human-evolution-slider01.jpg);
-} 
-
-.paleontology-slider {
-  background-image: url(../images/Exhibits/Paleontology/paleontology-slider01.jpg);
-} 
-
-.wild-life-slider {
-  background-image: url(../images/Exhibits/Wild-life/wild-life-slider01.jpg);
-} 
-
-.fossils-in-focus-slider {
-  background-image: url(../images/Events/Fossils-in-Focus/fossils-in-focus-slider01.jpg);
-} 
-
-.mummies-slider {
-  background-image: url(../images/Events/Mummies/mummies-slider01.jpg);
-} 
-
-.the-titanosaur-slider {
-  background-image: url(../images/Events/The-Titanosaur/the-titanosaur-slider01.jpg);
-} 
+/* Exhibits and events pages */
 
 .gallery-page_button {
   width: auto; 
@@ -1419,9 +1301,269 @@
   color: #0b5f79;
 }
 
+/* Main page and secondary pages sliders */
+
+.slider {
+  align-content: center;
+  align-items: center; 
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  display: flex; 
+  height: 300px; 
+  justify-content: space-between; 
+  margin: 25px; 
+  width: calc(100% - 50px); 
+  box-shadow: 7px 7px 7px 2px rgba(0,0,0,0.7);
+  position: relative; 
+  overflow: hidden;
+} 
+
+.slider_slides-container {
+  position: absolute;
+  width: 300%; 
+  height: 100%; 
+  left: -100%;
+  margin: 0;
+  padding: 0; 
+  align-content: center;
+  align-items: center; 
+  display: flex; 
+  justify-content: space-between; 
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%; 
+  height: 100%; 
+  display: inline-block;
+  margin: 0;
+  padding: 0; 
+  transition: left 0.3s ease-in-out; 
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: contain;
+} 
+
+.slide-1 {
+  background-image: url(../images/MainPage/splash-screen-1.bmp);
+}
+
+.slide-2 {
+  background-image: url(../images/MainPage/splash-screen-2.bmp);
+}
+
+.slide-3 {
+  background-image: url(../images/MainPage/splash-screen-3.bmp);
+}
+
+.slide-4 {
+  background-image: url(../images/MainPage/splash-screen-4.bmp);
+}
+
+.slide-5 {
+  background-image: url(../images/MainPage/splash-screen-5.bmp);
+}
+
+.slide-6 {
+  background-image: url(../images/MainPage/splash-screen-6.bmp);
+}
+
+.slide-7 {
+  background-image: url(../images/MainPage/splash-screen-7.bmp);
+}
+
+.ancient-world-slide-1 {
+  background-image: url(../images/Exhibits/Ancient-world/ancient-world-slider01.jpg);
+} 
+
+.ancient-world-slide-2 {
+  background-image: url(../images/Exhibits/Ancient-world/ancient-world-slider02.jpg);
+}
+
+.ancient-world-slide-3 {
+  background-image: url(../images/Exhibits/Ancient-world/ancient-world-slider03.jpg);
+}
+
+.ancient-world-slide-4 {
+  background-image: url(../images/Exhibits/Ancient-world/ancient-world-slider04.jpg);
+}
+
+.history-of-weapons-slide-1 {
+  background-image: url(../images/Exhibits/History-of-weapons/history-of-weapons-slider01.jpg);
+} 
+
+.history-of-weapons-slide-2 {
+  background-image: url(../images/Exhibits/History-of-weapons/history-of-weapons-slider02.jpg);
+}
+
+.history-of-weapons-slide-3 {
+  background-image: url(../images/Exhibits/History-of-weapons/history-of-weapons-slider03.jpg);
+}
+
+.history-of-weapons-slide-4 {
+  background-image: url(../images/Exhibits/History-of-weapons/history-of-weapons-slider04.jpg);
+} 
+
+.human-evolution-slide-1 {
+  background-image: url(../images/Exhibits/Human-Evolution/human-evolution-slider01.jpg);
+} 
+
+.human-evolution-slide-2 {
+  background-image: url(../images/Exhibits/Human-Evolution/human-evolution-slider02.jpg);
+}
+
+.human-evolution-slide-3 {
+  background-image: url(../images/Exhibits/Human-Evolution/human-evolution-slider03.jpg);
+}
+
+.human-evolution-slide-4 {
+  background-image: url(../images/Exhibits/Human-Evolution/human-evolution-slider04.jpg);
+} 
+
+.paleontology-slide-1 {
+  background-image: url(../images/Exhibits/Paleontology/paleontology-slider01.jpg);
+} 
+
+.paleontology-slide-2 {
+  background-image: url(../images/Exhibits/Paleontology/paleontology-slider02.jpg);
+}
+
+.paleontology-slide-3 {
+  background-image: url(../images/Exhibits/Paleontology/paleontology-slider03.jpg);
+}
+
+.paleontology-slide-4 {
+  background-image: url(../images/Exhibits/Paleontology/paleontology-slider04.jpg);
+}
+
+.wild-life-slide-1 {
+  background-image: url(../images/Exhibits/Wild-life/wild-life-slider01.jpg);
+} 
+
+.wild-life-slide-2 {
+  background-image: url(../images/Exhibits/Wild-life/wild-life-slider02.jpg);
+}
+
+.wild-life-slide-3 {
+  background-image: url(../images/Exhibits/Wild-life/wild-life-slider03.jpg);
+}
+
+.wild-life-slide-4 {
+  background-image: url(../images/Exhibits/Wild-life/wild-life-slider04.jpg);
+}
+
+.fossils-in-focus-slider {
+  background-image: url(../images/Events/Fossils-in-Focus/fossils-in-focus-slider01.jpg);
+} 
+
+.mummies-slider {
+  background-image: url(../images/Events/Mummies/mummies-slider01.jpg);
+} 
+
+.the-titanosaur-slider {
+  background-image: url(../images/Events/The-Titanosaur/the-titanosaur-slider01.jpg);
+} 
+
+.slide-current {
+  left: 0; 
+  z-index: 30;
+}
+
+.slide-prev {
+  left: -100%;
+  z-index: 30;
+} 
+
+.slide-next {
+  left: 100%;
+  z-index: 30;
+}
+
+.slide-hidden {
+  z-index: 20;
+  background-image: none; 
+  background-color: rgba(255,255,255,1.0);
+}
+
+.arrow-container {
+  align-content: center;
+  align-items: center; 
+  background-color: rgba(235,235,235,0.2); 
+  border-radius: 50%; 
+  display: flex; 
+  height: 50px; 
+  justify-content: center; 
+  margin: 0 5px; 
+  width: 50px; 
+  z-index: 40; 
+} 
+
+.arrow-container:hover {
+  background-color: rgba(125,125,125,0.5); 
+  transition: ease-in-out 0.1s;
+}
+
+.arrow-container:active {
+  background-color: rgba(105,105,105,0.7); 
+  border: 1px solid #373737;
+  box-shadow: inset 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+  transition: ease-in-out 0.05s;
+}
+
+.right-slide-arrow {
+  border: solid #16631c;
+  border-width: 0 0.4em 0.4em 0;
+  display: inline-block;
+  padding: .40em;
+  margin-left: -0.2em;
+  transform:rotate(-45deg);
+} 
+
+.left-slide-arrow {
+  border: solid #16631c;
+  border-width: 0 0.4em 0.4em 0;
+  display: inline-block;
+  padding: .40em;
+  margin-left: 0.2em;
+  transform:rotate(135deg);
+} 
+
+.arrow-container:hover .right-slide-arrow, 
+.arrow-container:active .right-slide-arrow {
+  border: solid #3BFD49;
+  border-width: 0 0.4em 0.4em 0;
+  display: inline-block;
+  padding: .40em;
+  margin-left: 0.2em;
+  transform:rotate(-45deg);
+  transition: ease-in-out 0.1s;
+} 
+ 
+.arrow-container:hover .left-slide-arrow, 
+.arrow-container:active .left-slide-arrow {
+  border: solid #3BFD49;
+  border-width: 0 0.4em 0.4em 0;
+  display: inline-block;
+  padding: .40em;
+  margin-left: -0.2em;
+  transform:rotate(135deg);
+  transition: ease-in-out 0.1s;
+} 
+
 /* Search results page */ 
 
-/*Footer*/
+
+
+
+
+
+
+
+
+
+/* Footer */
 
 .footer {
   align-content: space-around;
