@@ -4,7 +4,7 @@
   <title>Museum</title>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- “viewport” directive. Once you’ve made sure your layout fits on smaller displays, you need this tag to satisfy mobile WebKits -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link href="../styles/main.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">  
@@ -429,10 +429,10 @@
               
               <div class="site-section_subsection-information">
                 <p class="text">
-                  Pricing categories:
+                  Pricing categories by age:
                   Adult 18-64, Senior 65+, Youth 7-17, Children 6 and under.
                   <br><br>
-                  *Families: two adults and their children 17 /& under (max 8 members).
+                  *Families: two adults and their children 17 and under.
                   <br><br>
                   *Those eligible for Family pricing will find the rate automatically reflected in totals. No additional discounts are applied to the Family Rate.
                   <br><br>
@@ -453,7 +453,7 @@
           <h2 class="heading-h1">SELECT VISITING PROGRAM</h2>
         </div>
 
-        <form class="form tours-section-form">
+        <form class="form tours-section-form" data-name="select-program">
           <div class="main-page_subsection">
             <div class="main-page_subsection-block">
               <div class="main-page_subsection-content">
@@ -461,36 +461,57 @@
               </div>
 
               <div class="main-page_subsection-content">              
-                <input class="input input_radio-button" type="radio" name="admission" value="free-admission" checked="checked"> Select Free admission 
+                <input class="input input_radio-button" type="radio" name="admission" value="free-admission" checked> Select Free admission 
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio" name="admission" value="program"> Select a Program
+                <input class="input input_radio-button" type="radio" name="admission"  value="program"> Select a Program
               </div> 
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
             </div> 
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Specify length of your visit</h3>
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio" name="days" value="one-day" checked="checked"> One-day admission
+                <input class="input input_radio-button" type="radio" name="days" value="one-day" checked> One-day admission
               </div> 
 
               <div class="main-page_subsection-content">
                 <input class="input input_radio-button" type="radio" name="days" value="two-days"> Two-days admission
               </div> 
-            </div>
 
-            <div class="main-page_subsection-block">
               <div class="main-page_subsection-content">
-                <h3 class="heading-h3">Select the date of your visit</h3>
-                <input class="input input_date" type="date" required>
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                </div>
               </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
+              <div class="main-page_subsection-content">
+                <h3 class="heading-h3">Select the date of your visit</h3>
+                <input class="input input_date" type="date" name="date" required>
+              </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Specify details of your visit</h3>
               </div>
@@ -500,31 +521,38 @@
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="part-of-the-day" value="half-day" checked="checked"> Half-day
-              </div>  
+                <input class="input input_radio-button" type="radio" name="part-of-the-day" value="full-day" checked> Full-day
+              </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="part-of-the-day" value="full-day"> Full-day
-              </div> 
+                <input class="input input_radio-button" type="radio" name="part-of-the-day" value="half-day"> Half-day
+              </div>  
 
               <div class="main-page_subsection-content">
                 <h4 class="heading-h4">Specify the program type</h4>
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="age" value="younger-children" checked="checked"> For younger children
+                <input class="input input_radio-button visitors-age-section" type="radio" name="age" value="younger-children"> For younger children
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="age" value="older-children"> For older children
+                <input class="input input_radio-button visitors-age-section" type="radio" name="age" value="older-children"> For older children
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="age" value="adults"> For adults
+                <input class="input input_radio-button visitors-age-section" type="radio" name="age" value="adults"> For adults
+              </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                </div>
               </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden programs-section">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Choose from possible Programs</h3>
               </div>
@@ -536,15 +564,15 @@
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio" name="program" value="younger-children-program" checked="checked"> Families with younger children (full-day)
+                    <input class="input input_radio-button full-day-programs-section younger-children-programs-section" type="radio" name="program" value="younger-children-program"> Families with younger children (full-day)
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="older-children-program"> Families with older children (full-day)
+                    <input class="input input_radio-button full-day-programs-section older-children-programs-section" type="radio" name="program" value="older-children-program"> Families with older children (full-day)
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="adults-program"> Adults (full-day)
+                    <input class="input input_radio-button full-day-programs-section adults-programs-section" type="radio" name="program" value="adults-program"> Adults (full-day)
                   </div>
                 </div>
               
@@ -554,112 +582,135 @@
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="option-a-program"> Families with younger children (Option A)
+                    <input class="input input_radio-button half-day-programs-section younger-children-programs-section" type="radio" name="program" value="option-a-program"> Families with younger children (Option A)
                   </div> 
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="option-b-program"> Families with younger children (Option B)
+                    <input class="input input_radio-button half-day-programs-section younger-children-programs-section" type="radio" name="program" value="option-b-program"> Families with younger children (Option B)
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="option-c-program"> Families with older children (Option C)
+                    <input class="input input_radio-button half-day-programs-section older-children-programs-section" type="radio" name="program" value="option-c-program"> Families with older children (Option C)
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="option-d-program"> Families with older children (Option D)
+                    <input class="input input_radio-button half-day-programs-section older-children-programs-section" type="radio" name="program" value="option-d-program"> Families with older children (Option D)
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="option-e-program"> Adults (Option E)
+                    <input class="input input_radio-button half-day-programs-section adults-programs-section" type="radio" name="program" value="option-e-program"> Adults (Option E)
                   </div>
 
                   <div class="main-page_subsection-content">
-                    <input class="input input_radio-button" type="radio"  name="program" value="option-f-program"> Adults (Option F)
+                    <input class="input input_radio-button half-day-programs-section adults-programs-section" type="radio" name="program" value="option-f-program"> Adults (Option F)
                   </div>
+                </div>
+              </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
                 </div>
               </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Specify number of visitors by categories</h3>
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number" value="1"> Adults
+                <input class="input input_number" type="number" value="0" min="0" name="adults"> Adults
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number"  value="0"> Younger children
+                <input class="input input_number" type="number" value="0" min="0" name="younger-children"> Younger children
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number"  value="0"> Older children
+                <input class="input input_number" type="number" value="0" min="0" name="older-children"> Older children
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number"  value="0"> Beneficiaries
+                <input class="input input_number" type="number" value="0" min="0" name="beneficiaries"> Beneficiaries
               </div>
 
               <div class="main-page_subsection-content">
-                <h3 class="heading-h3 visitors-number">Total number of visitors:</h3>
+                <h3 class="heading-h3">Total number of visitors: <span class="visitors-number"></span></h3>
+              </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                </div>
               </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Specify your personal contact information</h3>
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_textfield" type="text" required> First name
+                <input class="input input_textfield" type="text" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> First name
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_textfield" type="text" required> Last name
+                <input class="input input_textfield" type="text" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> Last name
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_telephone" type="tel" required> Telephone number
+                <input class="input input_telephone" type="tel" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> Telephone number
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_email" type="email" required> E-mail
+                <input class="input input_email" type="email" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> E-mail
               </div> 
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="select-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="select-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden total-cost-section">
               <div class="main-page_subsection-content">
-                <h3 class="heading-h3 total-cost">Total tickets cost is: $</h3>
+                <h3 class="heading-h3">Total tickets cost is: <span class="total-cost"></span>$</h3>
               </div> 
+
+              <div class="main-page_subsection-content">
+                <button class="button confirm-order-button" data-type="button" data-target="select-program" data-function="purchase-button">
+                  Confrim your order! 
+                </button>
+              </div>
             </div>  
 
-            <div class="main-page_subsection-block">
-              <button class="button confirm-order-button" data-type="button" data-target="selected-programs" data-function="purchase-button">
-                Confrim your order! 
-              </button>
-            </div>
-
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Congratulations!</h3> 
 
                 <p class="text" data-name="selected-programs" data-type="interactive-text">
                   Your tickets are being sent to specified email<br>
                   You can pay tickets online or at the ticket ofice on the day of admission<br>
-                  Please arrive in advance on the day of admission<br>
+                  Please arrive in advance on the day of admission<br><br>
+                  Your order details:<br>
+                  - Date of visit: <span></span>
+                  - Time of visit: <span></span>
+                  - Number of visitors: <span></span>
+                  - Total tickets cost: <span></span>
+                  <br><br>
+                  Your day plan:<br>
+                  <span></span>
+<!--                   Full/half free admission 
 
-                  Your order details: 
-                  - Date of visit: 
-                  - Time of visit: 
-                  - Number of visitors: 
-                  - Total tickets cost: 
-
-                  Your day plan:  
-                  Full/half free admission 
                   OR 
+
                   - 09:00 .... 
-                  - 10:00 ....
+                  - 10:00 .... -->
                 </p>
               </div>
             </div>               
@@ -674,35 +725,48 @@
           <h2 class="heading-h2">One-day admission only</h2>
         </div>
 
-        <form class="form tours-section-form">
+        <form class="form tours-section-form" data-name="construct-program">
           <div class="main-page_subsection">
-
             <div class="main-page_subsection-block">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Select the date of your visit</h3>
                 <input class="input input_date" type="date" required>
               </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Choose time of your visit</h3>
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="time" value="a.m." checked="checked"> 09:00 - 13:00
+                <input class="input input_radio-button" type="radio" name="time" value="a.m." checked="checked"> 09:00 - 13:00
               </div>  
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="time" value="p.m."> 13:00 - 19:00
+                <input class="input input_radio-button" type="radio" name="time" value="p.m."> 13:00 - 19:00
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_radio-button" type="radio"  name="time" value="full-day"> 09:00 - 19:00
+                <input class="input input_radio-button" type="radio" name="time" value="full-day"> 09:00 - 19:00
               </div> 
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Choose Exhibits and Events you'd like to visit</h3>
               </div>
@@ -752,35 +816,49 @@
                   </div>
                 </div>
               </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Specify number of visitors by categories</h3>
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number" value="1"> Adults
+                <input class="input input_number" type="number" name="adults" value="0" min="0"> Adults
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number"  value="0"> Younger children
+                <input class="input input_number" type="number" name="younger-children" value="0" min="0"> Younger children
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number"  value="0"> Older children
+                <input class="input input_number" type="number" name="older-children" value="0" min="0"> Older children
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number"  value="0"> Beneficiaries
+                <input class="input input_number" type="number" name="beneficiaries" value="0" min="0"> Beneficiaries
               </div>
 
               <div class="main-page_subsection-content">
-                <h3 class="heading-h3 visitors-number">Total number of visitors:</h3>
+                <h3 class="heading-h3">Total number of visitors: <span class="visitors-number"></span></h3>
+              </div>
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                </div>
               </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Specify your personal contact information</h3>
               </div>
@@ -800,40 +878,49 @@
               <div class="main-page_subsection-content">
                 <input class="input input_email" type="email" required> E-mail
               </div> 
+
+              <div class="main-page_subsection-content">
+                <div class="next-section-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section">
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                  <span class="open-list-arrow open-list-arrow-button" data-type="button" data-target="construct-program" data-function="interactive-tours-section"></span>
+                </div>
+              </div>
             </div>
 
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden total-cost-section">
               <div class="main-page_subsection-content">
-                <h3 class="heading-h3 total-cost">Total tickets cost is: $</h3>
+                <h3 class="heading-h3">Total tickets cost is: <span class="total-cost"></span>$</h3>
               </div> 
+
+              <div class="main-page_subsection-content">
+                <button class="button confirm-order-button" data-type="button" data-target="construct-program" data-function="purchase-button">
+                  Confrim your order! 
+                </button>
+              </div>
             </div>  
 
-            <div class="main-page_subsection-block">
-              <button class="button confirm-order-button" data-type="button" data-target="constructed-programs" data-function="purchase-button">
-                Confrim your order! 
-              </button>
-            </div>
-
-            <div class="main-page_subsection-block">
+            <div class="main-page_subsection-block main-page_subsection-block-hidden">
               <div class="main-page_subsection-content">
                 <h3 class="heading-h3">Congratulations!</h3> 
 
                 <p class="text" data-name="constructed-programs" data-type="interactive-text">
                   Your tickets are being sent to specified email<br>
                   You can pay tickets online or at the ticket ofice on the day of admission<br>
-                  Please arrive in advance on the day of admission<br>
+                  Please arrive in advance on the day of admission<br><br>
+                  Your order details:<br>
+                  - Date of visit: <span></span>
+                  - Time of visit: <span></span>
+                  - Number of visitors: <span></span>
+                  - Total tickets cost: <span></span>
+                  <br><br>
+                  Your day plan:<br>
+                  <span></span>
+<!--                   Full/half free admission 
 
-                  Your order details: 
-                  - Date of visit: 
-                  - Time of visit: 
-                  - Number of visitors: 
-                  - Total tickets cost: 
-
-                  Your day plan:  
-                  Full/half free admission 
                   OR 
+
                   - 09:00 .... 
-                  - 10:00 ....
+                  - 10:00 .... -->
                 </p>
               </div>
             </div>               
@@ -2893,7 +2980,7 @@
 
           <div class="site-section_subsection">
             <div class="site-section_image-container">
-              <img src="../images/Events/Fossils-in-Focus/fossils-in-focus-page03.jpg" alt="Fossils in Focus"" class="site-section_image">
+              <img src="../images/Events/Fossils-in-Focus/fossils-in-focus-page03.jpg" alt="Fossils in Focus" class="site-section_image">
             </div>
 
             <div class="site-section_subsection-information">

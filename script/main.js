@@ -99,7 +99,7 @@
 								});
 
 								if (mainPage.classList.contains("display-hidden")) {
-									mainPage.classList.remove("display-hidden")
+									mainPage.classList.remove("display-hidden");
 								}; 
 
 								targetNode.classList.add("section-visible");
@@ -123,6 +123,7 @@
 
 								targetNode.parentNode.classList.remove("header_nav-submenu-container-expand"); 
 							}; 
+
 							break;
 						}
 					};
@@ -134,13 +135,6 @@
 
 					break;
 				}
-
-				case "purchase-button": {
-
-					break;
-				}
-
-				/* Main page and secondary pages sliders */
 
 				case "slide-arrow": {
 					const slides = handlePseudoArray(targetNode.querySelectorAll('[data-name="slide"]')); 
@@ -189,7 +183,238 @@
 							break;
 						}
 					};
+
 					break;
+				}
+
+				case "interactive-tours-section": {
+					let triggerNodeParrent;
+					let triggerNodeParrentWrapper;
+					let triggerNodeNextSibling;
+					let visitType;
+					let visitTypeValue;
+					let visitLength;
+					let visitLengthValue; 
+					let visitDate;
+					let visitTime;
+					let visitTimeValue;
+					let visitTimeOfTheDay; 
+					let visitTimeOfTheDayValue; 
+					let visitorsAge;
+					let visitorsAgeValue;
+					let visitorsAgeSection;
+					let selectedProgram;
+					let selectedExhibits; 
+					let programsSection;
+					let fullDayProgramsSection;
+					let adultsProgramsSection;
+					let youngerChildrenProgramsSection;
+					let olderChildrenProgramsSection;
+					let halfDayProgramsSection;
+					let numberOfAdults;
+					let numberOfYoungerChildren;
+					let numberOfOlderChildren;
+					let numberOfBeneficiaries;
+					let numberOfVisitors; 
+					let totalCost; 
+					let totalTicketsCost = 0;
+					let totalNumberOfVisitors = 0;
+
+					for (
+						triggerNodeParrent = triggerNode.parentNode; 
+						!triggerNodeParrent.classList.contains("main-page_subsection-block"); 
+						triggerNodeParrent = triggerNodeParrent.parentNode
+					) {};
+
+					triggerNodeParrentWrapper = triggerNodeParrent.parentNode;
+					triggerNodeNextSibling = triggerNodeParrent.nextElementSibling;
+
+					if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-hidden")) {
+						triggerNodeNextSibling.classList.remove("main-page_subsection-block-hidden");
+					}; 
+
+					if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-removed")) {
+						triggerNodeNextSibling.nextElementSibling.classList.remove("main-page_subsection-block-hidden");
+					}
+
+					visitType = triggerNodeParrentWrapper.querySelector('[name="admission"]:checked');
+					visitLength = triggerNodeParrentWrapper.querySelector('[name="days"]:checked'); 
+					visitDate = triggerNodeParrentWrapper.querySelector('[name="date"]'); 
+					visitTime = triggerNodeParrentWrapper.querySelector('[name="part-of-the-day"]:checked'); 
+					visitTimeOfTheDay = triggerNodeParrentWrapper.querySelector('[name="time"]:checked'); 
+					visitorsAge = triggerNodeParrentWrapper.querySelector('[name="age"]:checked');
+					selectedProgram = triggerNodeParrentWrapper.querySelector('[name="program"]:checked');
+					selectedExhibits = triggerNodeParrentWrapper.querySelectorAll('[name="exhibit"]:checked');
+					numberOfAdults = triggerNodeParrentWrapper.querySelector('[name="adults"]');
+					numberOfYoungerChildren = triggerNodeParrentWrapper.querySelector('[name="younger-children"]');
+					numberOfOlderChildren = triggerNodeParrentWrapper.querySelector('[name="older-children"]');
+					numberOfBeneficiaries = triggerNodeParrentWrapper.querySelector('[name="beneficiaries"]');
+					programsSection = triggerNodeParrentWrapper.querySelector(".programs-section");				
+					visitorsAgeSection = triggerNodeParrentWrapper.querySelectorAll(".visitors-age-section");
+					fullDayProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".full-day-programs-section");
+					halfDayProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".half-day-programs-section");
+					adultsProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".adults-programs-section");
+					youngerChildrenProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".younger-children-programs-section");
+					olderChildrenProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".older-children-programs-section");
+					numberOfVisitors = triggerNodeParrentWrapper.querySelector(".visitors-number");
+					totalCost = triggerNodeParrentWrapper.querySelector(".total-cost");
+					visitTypeValue = (visitType) ? visitType.value : "none";
+					visitLengthValue = (visitLength) ? visitLength.value : "none";
+					visitTimeValue = (visitTime) ? visitTime.value : "none";
+					visitorsAgeValue = (visitorsAge) ? visitorsAge.value : "none";
+					visitTimeOfTheDayValue = (visitTimeOfTheDay) ? visitTimeOfTheDay.value : "none";
+					
+					totalNumberOfVisitors = function() {
+						let result = (
+							parseInt(numberOfAdults.value) + 
+							parseInt(numberOfYoungerChildren.value) + 
+							parseInt(numberOfOlderChildren.value) + 
+							parseInt(numberOfBeneficiaries.value)
+						); 
+
+						if (result === 1) {
+							result += " person"; 
+						} else {
+							result += " people"; 
+						};
+
+						return result;
+					};
+
+					totalTicketsCost = function() {
+						let constructProgram = (targetName === "construct-program") ? 1 : 0;
+						let freeAdmission = (visitTypeValue === "free-admission") ? 1 : 0;
+						let programAdmission = (visitTypeValue === "program") ? 1 : 0;
+						let oneDayAdmission = (visitLengthValue === "one-day") ? 1 : 0;
+						let twoDaysAdmission = (visitLengthValue === "two-days") ? 1.5 : 0;
+						let fullDayAdmission = (visitTimeValue === "full-day") ? 1 : 0;
+						let halfDayAdmission = (visitTimeValue === "half-day") ? 0.5 : 0;
+						let timeOfVisit = (visitTimeOfTheDayValue === "full-day") ? 1 : 0.5;
+						let numberOfSelectedExhibits = (selectedExhibits) ? handlePseudoArray(selectedExhibits).length : 0; 
+
+						console.log(numberOfSelectedExhibits);
+
+						let relativeVisitorsQuantity = (
+							parseInt(numberOfAdults.value) + 
+							0.3 * parseInt(numberOfYoungerChildren.value) + 
+							0.7 * parseInt(numberOfOlderChildren.value) + 
+							0 * parseInt(numberOfBeneficiaries.value)
+						);
+
+						let result = (
+							100 * constructProgram + 
+							(50 * programAdmission + 20 * freeAdmission + 10 * numberOfSelectedExhibits) * 
+							(oneDayAdmission + twoDaysAdmission + constructProgram) * 
+							(fullDayAdmission + halfDayAdmission + timeOfVisit) * 
+							relativeVisitorsQuantity
+						);
+
+						return result;
+					};
+
+					numberOfVisitors.innerHTML = totalNumberOfVisitors(); 
+					totalCost.innerHTML = totalTicketsCost(); 
+
+					switch (visitTypeValue) {
+						case "free-admission": {
+							programsSection.classList.remove("main-page_subsection-block-hidden"); 
+							programsSection.classList.add("main-page_subsection-block-removed"); 
+
+							handlePseudoArray(visitorsAgeSection, (function(obj) {
+								obj.setAttribute("disabled", "disabled"); 
+							})); 
+
+							break;
+						}
+
+						case "program": {
+							programsSection.classList.remove("main-page_subsection-block-removed");
+
+							handlePseudoArray(visitorsAgeSection, (function(obj) {
+								obj.removeAttribute("disabled"); 
+							})); 
+
+							handlePseudoArray(programsSection, (function(obj) {
+								obj.removeAttribute("disabled"); 
+							})); 
+
+							switch (visitTimeValue) {
+								case "full-day": {
+									handlePseudoArray(fullDayProgramsSection, (function(obj) {
+										obj.removeAttribute("disabled"); 
+									})); 
+
+									handlePseudoArray(halfDayProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									break; 
+								}
+
+								case "half-day": {
+									handlePseudoArray(fullDayProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									handlePseudoArray(halfDayProgramsSection, (function(obj) {
+										obj.removeAttribute("disabled"); 
+									})); 
+
+									break; 
+								}
+							};
+
+							switch (visitorsAgeValue) {
+								case "younger-children":{
+									handlePseudoArray(adultsProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									handlePseudoArray(olderChildrenProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									break;
+								}
+
+								case "older-children": {
+									handlePseudoArray(adultsProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									handlePseudoArray(youngerChildrenProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									break; 
+								}
+
+								case "adults": {
+									handlePseudoArray(youngerChildrenProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									handlePseudoArray(olderChildrenProgramsSection, (function(obj) {
+										obj.setAttribute("disabled", "disabled"); 
+									})); 
+
+									break; 
+								}
+							};
+
+							break; 
+						}
+					};
+
+					if (triggerNodeFunction === "purchase-button") {
+
+					
+						if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-hidden")) {
+							triggerNodeNextSibling.classList.remove("main-page_subsection-block-hidden");
+						}; 
+					}; 
+
+					break; 
 				}
 			};
 
@@ -239,30 +464,9 @@
 				clearInterval(slideInterval); 
 			}, false); 
 		})();
+
+		const adjustSectionsHeight = (function() {
+
+		})(); 
 	}; 
-})(); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* TODO: Constraints - pop up window on wrong form submition
-add this to form validation 
-var email = document.getElementById("mail");
-
-email.addEventListener("input", function (event) {
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity("I expect an e-mail, darling!");
-  } else {
-    email.setCustomValidity("");
-  }
-});
-*/
+})();
