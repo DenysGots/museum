@@ -189,7 +189,7 @@
 
         <form class="header_search-form">
           <button class="button header_search-form_button" data-type="button" data-target="search-results" data-function="search-button">
-            <div class="magnifying-glass"></div>
+            <span class="magnifying-glass" data-type="button" data-target="search-results" data-function="nav-button" data-subfunction="search-button">&#128269;</span>
           </button>
 
           <input class="input input_textfield input_textfield-search" type="text" name="search" placeholder="Search our site">
@@ -245,7 +245,7 @@
           </div>
 
           <div class="main-page_section-information">
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="paleontology" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="paleontology" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="paleontology" data-function="nav-button">
                 <div class="main-page_section-image paleontology-image" data-type="button" data-target="paleontology" data-function="nav-button">
                 </div>
@@ -260,7 +260,7 @@
               </div>
             </div>
 
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="ancient-world" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="ancient-world" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="ancient-world" data-function="nav-button">
                 <div class="main-page_section-image ancient-image" data-type="button" data-target="ancient-world" data-function="nav-button">
                 </div>
@@ -275,7 +275,7 @@
               </div>
             </div> 
 
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="wild-life" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="wild-life" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="wild-life" data-function="nav-button">
                 <div class="main-page_section-image wild-life-image" data-type="button" data-target="wild-life" data-function="nav-button">
                 </div>
@@ -290,7 +290,7 @@
               </div>
             </div>
 
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="human-evolution" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="human-evolution" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="human-evolution" data-function="nav-button">
                 <div class="main-page_section-image human-evolution-image" data-type="button" data-target="human-evolution" data-function="nav-button">
                 </div>
@@ -305,7 +305,7 @@
               </div>
             </div> 
 
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="history-of-weapons" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="history-of-weapons" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="history-of-weapons" data-function="nav-button">
                 <div class="main-page_section-image history-of-weapons-image" data-type="button" data-target="history-of-weapons" data-function="nav-button">
                 </div>
@@ -345,7 +345,7 @@
           </div>
 
           <div class="main-page_section-information">
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="fossils-in-focus" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="fossils-in-focus" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="fossils-in-focus" data-function="nav-button">
                 <div class="main-page_section-image fossils-in-focus-image" data-type="button" data-target="fossils-in-focus" data-function="nav-button">
                 </div>
@@ -360,7 +360,7 @@
               </div>
             </div>
 
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="mummies" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="mummies" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="mummies" data-function="nav-button">
                 <div class="main-page_section-image mummies-image" data-type="button" data-target="mummies" data-function="nav-button">
                 </div>
@@ -376,7 +376,7 @@
               </div>
             </div>
 
-            <div class="main-page_section-exhibit-preview" data-type="button" data-target="the-titanosaur" data-function="nav-button">
+            <div class="main-page_section-exhibit-preview" data-type="button" data-target="the-titanosaur" data-function="nav-button" data-searchable>
               <div class="main-page_section-image-container" data-type="button" data-target="the-titanosaur" data-function="nav-button">
                 <div class="main-page_section-image the-titanosaur-image" data-type="button" data-target="the-titanosaur" data-function="nav-button">
                 </div>
@@ -396,7 +396,7 @@
 
 <!-- Guided tours section -->
 
-      <div class="main-page_section tours-section" data-name="tours-section" data-type="interactive-section">
+      <div class="main-page_section tours-section" data-name="tours-section" data-type="interactive-section" data-searchable>
         <div class="main-page_section-caption" data-name="tours-section" data-type="button" data-target="tours-section" data-function="nav-button">
           <p class="main-page_section-heading" data-name="tours-section" data-type="button" data-target="tours-section" data-function="nav-button">GUDIED TOURS</p>
 
@@ -621,7 +621,7 @@
               </div> 
 
               <div class="main-page_subsection-content">
-                <input class="input input_number" type="number" value="0" min="0" name="adults"> Adults
+                <input class="input input_number" type="number" value="1" min="0" name="adults"> Adults
               </div> 
 
               <div class="main-page_subsection-content">
@@ -654,19 +654,19 @@
               </div>
 
               <div class="main-page_subsection-content">
-                <input class="input input_textfield" type="text" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> First name
+                <input class="input input_textfield personal-data" type="text" name="first-name" placeholder="John" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> First name
               </div> 
 
-              <div class="main-page_subsection-content">
-                <input class="input input_textfield" type="text" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> Last name
+              <div class="main-page_subsection-content personal-data">
+                <input class="input input_textfield" type="text" name="last-name" placeholder="Smith" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> Last name
               </div> 
 
-              <div class="main-page_subsection-content">
-                <input class="input input_telephone" type="tel" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> Telephone number
+              <div class="main-page_subsection-content personal-data">
+                <input class="input input_telephone" type="tel" name="telephone-number" placeholder="380121231212" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> Telephone number
               </div> 
 
-              <div class="main-page_subsection-content">
-                <input class="input input_email" type="email" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> E-mail
+              <div class="main-page_subsection-content personal-data">
+                <input class="input input_email" type="email" name="email" placeholder="j_s@gmail.com" required data-type="button" data-target="select-program" data-function="interactive-tours-section"> E-mail
               </div> 
 
               <div class="main-page_subsection-content">
@@ -683,7 +683,7 @@
               </div> 
 
               <div class="main-page_subsection-content">
-                <button class="button confirm-order-button" data-type="button" data-target="select-program" data-function="purchase-button">
+                <button class="button confirm-order-button" data-type="button" data-target="select-program" data-function="interactive-tours-section" data-subfunction="purchase-button">
                   Confrim your order! 
                 </button>
               </div>
@@ -698,19 +698,10 @@
                   You can pay tickets online or at the ticket ofice on the day of admission<br>
                   Please arrive in advance on the day of admission<br><br>
                   Your order details:<br>
-                  - Date of visit: <span></span>
-                  - Time of visit: <span></span>
-                  - Number of visitors: <span></span>
-                  - Total tickets cost: <span></span>
-                  <br><br>
-                  Your day plan:<br>
-                  <span></span>
-<!--                   Full/half free admission 
-
-                  OR 
-
-                  - 09:00 .... 
-                  - 10:00 .... -->
+                  - Date of visit: <span class="order-date"></span><br>
+                  - Time of visit: <span class="order-time"></span><br>
+                  - Number of visitors: <span class="order-visitors"></span><br>
+                  - Total tickets cost: <span class="order-total-cost">$</span><br>
                 </p>
               </div>
             </div>               
@@ -912,15 +903,6 @@
                   - Time of visit: <span></span>
                   - Number of visitors: <span></span>
                   - Total tickets cost: <span></span>
-                  <br><br>
-                  Your day plan:<br>
-                  <span></span>
-<!--                   Full/half free admission 
-
-                  OR 
-
-                  - 09:00 .... 
-                  - 10:00 .... -->
                 </p>
               </div>
             </div>               
@@ -930,7 +912,7 @@
 
 <!-- Gallery section -->
 
-      <div class="main-page_section gallery-section" data-name="gallery-section" data-type="interactive-section">
+      <div class="main-page_section gallery-section" data-name="gallery-section" data-type="interactive-section" data-searchable>
         <div class="main-page_section-caption" data-name="gallery-section" data-type="button" data-target="gallery-section" data-function="nav-button">
           <p class="main-page_section-heading" data-name="gallery-section" data-type="button" data-target="gallery-section" data-function="nav-button">GALLERY</p>
 
@@ -951,40 +933,40 @@
 
           <div class="main-page_section-information">
             <div class="gallery_filters">
-              <select class="select" title="Select an Exhibit">
-                <option data-class="ancient-world" selected="selected">
+              <select class="select" title="Select an Exhibit" data-type="button" data-target="gallery-section" data-function="gallery-options">
+                <option class="all-images" selected data-group="All">
                   All images
                 </option> 
 
-                <option data-class="ancient-world">
+                <option class="ancient-world-images" data-group="Ancient-world">
                   Ancient World
                 </option>
 
-                <option data-class="fossils-in-focus">
+                <option class="fossils-in-focus-images" data-group="Fossils-in-Focus">
                   Fossils in Focus
                 </option>
 
-                <option data-class="history-of-weapons">
+                <option class="history-of-weapons-images" data-group="History-of-weapons">
                   History of Weapons
                 </option>
 
-                <option data-class="human-evolution">
+                <option class="human-evolution-images" data-group="Human-Evolution">
                   Human Evolution
                 </option>
 
-                <option data-class="mummies">
+                <option class="mummies-images" data-group="Mummies">
                   Mummies
                 </option>
 
-                <option data-class="paleontology">
+                <option class="paleontology-images" data-group="Paleontology">
                   Paleontology
                 </option>
 
-                <option data-class="the-titanosaur">
+                <option class="the-titanosaur-images" data-group="The-Titanosaur">
                   The Titanosaur
                 </option>
 
-                <option data-class="wild-life">
+                <option class="wild-life-images" data-group="Wild-life">
                   Wild Life
                 </option>
               </select>
@@ -992,740 +974,743 @@
 
             <div class="gallery_images_preview">
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-1.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-1.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-1.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-2.jpg" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-2.jpg" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-2.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-3.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-3.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-3.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-4.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-4.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-4.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-5.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-5.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-5.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-6.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-6.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-6.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-7.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-7.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-7.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Fossils-in-Focus/fossils-8.png" alt="Fossils in Focus Exhibition">
+                <img class="gallery_image" src="" alt="Fossils in Focus Exhibition" data-name="fossils-8.png" data-group="Fossils-in-Focus" data-type="button" data-target="fossils-8.png" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-1.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-1.jpg" data-group="Mummies" data-type="button" data-target="mummies-1.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-2.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-2.jpg" data-group="Mummies" data-type="button" data-target="mummies-2.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-3.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-3.jpg" data-group="Mummies" data-type="button" data-target="mummies-3.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-4.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-4.jpg" data-group="Mummies" data-type="button" data-target="mummies-4.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-5.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-5.jpg" data-group="Mummies" data-type="button" data-target="mummies-5.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-6.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-6.jpg" data-group="Mummies" data-type="button" data-target="mummies-6.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-7.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-7.jpg" data-group="Mummies" data-type="button" data-target="mummies-7.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-8.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-8.jpg" data-group="Mummies" data-type="button" data-target="mummies-8.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-10.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-10.jpg" data-group="Mummies" data-type="button" data-target="mummies-10.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-11.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-11.jpg" data-group="Mummies" data-type="button" data-target="mummies-11.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-12.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-12.jpg" data-group="Mummies" data-type="button" data-target="mummies-12.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-13.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-13.jpg" data-group="Mummies" data-type="button" data-target="mummies-13.jpg" data-function="show-image">
               </div>
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Mummies/mummies-14.jpg" alt="Mummies Exhibition">
+                <img class="gallery_image" src="" alt="Mummies Exhibition" data-name="mummies-14.jpg" data-group="Mummies" data-type="button" data-target="mummies-14.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/The-Titanosaur/titanosaur-2.jpg" alt="The Titanosaur Exhibition">
+                <img class="gallery_image" src="" alt="The Titanosaur Exhibition" data-name="titanosaur-2.jpg" data-group="The-Titanosaur" data-type="button" data-target="titanosaur-2.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/The-Titanosaur/titanosaur-4.jpg" alt="The Titanosaur Exhibition">
+                <img class="gallery_image" src="" alt="The Titanosaur Exhibition" data-name="titanosaur-4.jpg" data-group="The-Titanosaur" data-type="button" data-target="titanosaur-4.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/The-Titanosaur/titanosaur-5.jpg" alt="The Titanosaur Exhibition">
+                <img class="gallery_image" src="" alt="The Titanosaur Exhibition" data-name="titanosaur-5.jpg" data-group="The-Titanosaur" data-type="button" data-target="titanosaur-5.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/The-Titanosaur/titanosaur-6.jpg" alt="The Titanosaur Exhibition">
+                <img class="gallery_image" src="" alt="The Titanosaur Exhibition" data-name="titanosaur-6.jpg" data-group="The-Titanosaur" data-type="button" data-target="titanosaur-6.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/The-Titanosaur/titanosaur-7.jpg" alt="The Titanosaur Exhibition">
+                <img class="gallery_image" src="" alt="The Titanosaur Exhibition" data-name="titanosaur-7.jpg" data-group="The-Titanosaur" data-type="button" data-target="titanosaur-7.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-01.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-01.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-01.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-02.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-02.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-02.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-03.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-03.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-03.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-04.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-04.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-04.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-05.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-05.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-05.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-06.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-06.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-06.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-07.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-07.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-07.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-08.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-08.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-08.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-09.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-09.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-09.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-10.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-10.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-10.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-11.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-11.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-11.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-12.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-12.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-12.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-13.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-13.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-13.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-14.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-14.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-14.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-15.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-15.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-15.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-16.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-16.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-16.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-17.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-17.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-17.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-18.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-18.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-18.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-19.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-19.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-19.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-20.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-20.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-20.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-21.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-21.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-21.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-22.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-22.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-22.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-23.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-23.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-23.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-24.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-24.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-24.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-25.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-25.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-25.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-26.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-26.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-26.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-27.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-27.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-27.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-28.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-28.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-28.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-29.JPG" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-29.JPG" data-group="Ancient-world" data-type="button" data-target="ancient-world-29.JPG" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-30.JPG" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-30.JPG" data-group="Ancient-world" data-type="button" data-target="ancient-world-30.JPG" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-31.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-31.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-31.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-32.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-32.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-32.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-33.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-33.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-33.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-34.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-34.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-34.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-35.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-35.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-35.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-36.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-36.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-36.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-37.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-37.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-37.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-38.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-38.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-38.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-39.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-39.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-39.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-40.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-40.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-40.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Ancient-world/ancient-world-41.jpg" alt="Ancient World Exhibition">
+                <img class="gallery_image" src="" alt="Ancient World Exhibition" data-name="ancient-world-41.jpg" data-group="Ancient-world" data-type="button" data-target="ancient-world-41.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-01.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-01.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-01.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-02.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-02.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-02.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-03.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-03.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-03.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-04.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-04.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-04.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-05.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-05.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-05.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-06.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-06.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-06.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-07.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-07.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-07.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-08.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-08.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-08.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-09.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-09.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-09.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-10.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-10.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-10.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-11.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-11.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-11.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-12.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-12.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-12.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-13.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-13.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-13.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-14.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-14.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-14.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-15.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-15.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-15.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-16.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-16.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-16.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-17.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-17.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-17.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-18.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-18.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-18.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-19.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-19.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-19.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-20.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-20.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-20.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-21.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-21.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-21.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-22.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-22.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-22.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-23.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-23.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-23.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-24.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-24.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-24.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-25.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-25.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-25.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-26.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-26.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-26.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-27.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-27.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-27.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-28.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-28.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-28.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-29.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-29.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-29.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-30.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-30.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-30.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-31.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-31.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-31.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-32.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-32.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-32.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-33.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-33.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-33.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-34.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-34.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-34.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-35.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-35.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-35.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-36.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-36.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-36.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-37.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-37.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-37.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-38.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-38.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-38.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-39.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-39.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-39.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-40.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-40.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-40.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-41.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-41.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-41.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-42.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-42.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-42.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/History-of-weapons/history-of-weapons-43.jpg" alt="History of Weapons Exhibition">
+                <img class="gallery_image" src="" alt="History of Weapons Exhibition" data-name="history-of-weapons-43.jpg" data-group="History-of-weapons" data-type="button" data-target="history-of-weapons-43.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-01.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-01.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-01.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-02.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-02.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-02.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-03.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-03.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-03.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-04.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-04.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-04.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-05.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-05.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-05.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-06.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-06.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-06.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-07.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-07.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-07.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-08.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-08.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-08.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-09.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-09.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-09.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-10.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-10.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-10.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-11.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-11.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-11.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-12.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-12.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-12.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-13.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-13.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-13.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-14.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-14.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-14.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-15.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-15.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-15.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-16.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-16.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-16.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-17.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-17.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-17.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-18.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-18.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-18.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-19.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-19.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-19.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-20.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-20.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-20.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-21.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-21.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-21.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-22.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-22.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-22.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-23.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-23.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-23.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-24.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-24.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-24.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Human-Evolution/human-evolution-25.jpg" alt="Human Evolution Exhibition">
+                <img class="gallery_image" src="" alt="Human Evolution Exhibition" data-name="human-evolution-25.jpg" data-group="Human-Evolution" data-type="button" data-target="human-evolution-25.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-01.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-01.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-01.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-02.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-02.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-02.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-03.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-03.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-03.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-04.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-04.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-04.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-05.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-05.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-05.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-06.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-06.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-06.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-07.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-07.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-07.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-08.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-08.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-08.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-09.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-09.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-09.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-10.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-10.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-10.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-11.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-11.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-11.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-12.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-12.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-12.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-13.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-13.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-13.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-14.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-14.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-14.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-15.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-15.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-15.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-16.JPG" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-16.JPG" data-group="Paleontology" data-type="button" data-target="paleontology-16.JPG" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-17.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-17.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-17.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-18.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-18.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-18.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-19.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-19.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-19.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-20.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-20.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-20.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-21.JPG" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-21.JPG" data-group="Paleontology" data-type="button" data-target="paleontology-21.JPG" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-22.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-22.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-22.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-23.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-23.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-23.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-24.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-24.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-24.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-25.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-25.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-25.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-26.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-26.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-26.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-27.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-27.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-27.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-28.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-28.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-28.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-29.JPG" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-29.JPG" data-group="Paleontology" data-type="button" data-target="paleontology-29.JPG" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Paleontology/paleontology-30.jpg" alt="Paleontology Exhibition">
+                <img class="gallery_image" src="" alt="Paleontology Exhibition" data-name="paleontology-30.jpg" data-group="Paleontology" data-type="button" data-target="paleontology-30.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-01.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-01.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-01.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-02.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-02.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-02.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-03.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-03.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-03.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-04.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-04.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-04.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-05.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-05.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-05.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-06.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-06.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-06.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-07.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-07.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-07.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-08.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-08.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-08.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-09.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-09.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-09.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-10.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-10.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-10.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-11.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-11.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-11.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-12.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-12.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-12.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-13.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-13.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-13.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-14.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-14.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-14.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-15.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-15.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-15.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-16.JPG" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-16.JPG" data-group="Wild-life" data-type="button" data-target="wild-life-16.JPG" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-17.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-17.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-17.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-18.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-18.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-18.jpg" data-function="show-image">
               </div> 
 
               <div class="gallery_image-container">
-                <img class="gallery_image" src="../images/Gallery/Wild-life/wild-life-19.jpg" alt="Wild Life Exhibition">
+                <img class="gallery_image" src="" alt="Wild Life Exhibition" data-name="wild-life-19.jpg" data-group="Wild-life" data-type="button" data-target="wild-life-19.jpg" data-function="show-image">
               </div>  
+            </div>
+
+            <div class="gallery_images_pages-container">
             </div>
           </div>
         </div>
@@ -1733,7 +1718,7 @@
 
 <!-- Directions section -->
 
-      <div class="main-page_section location-section" data-name="location-section" data-type="interactive-section">
+      <div class="main-page_section location-section" data-name="location-section" data-type="interactive-section" data-searchable>
         <div class="main-page_section-caption" data-name="location-section" data-type="button" data-target="location-section" data-function="nav-button">
           <p class="main-page_section-heading" data-name="location-section" data-type="button" data-target="location-section" data-function="nav-button">HOW TO FIND US</p>
 
@@ -1788,7 +1773,7 @@
 
 <!-- About-Us page -->
 
-    <div class="site-section display-hidden" data-name="about-us" data-type="interactive-block">
+    <div class="site-section secondary-page about-us-page display-hidden" data-name="about-us" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -1802,7 +1787,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">ABOUT US</h2> 
 
           <p class="text">
@@ -1880,7 +1865,7 @@
 
 <!-- Hours page -->
 
-    <div class="site-section display-hidden" data-name="hours" data-type="interactive-block">
+    <div class="site-section display-hidden" data-name="hours" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -1894,7 +1879,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">HOURS</h2> 
 
           <p class="text">
@@ -1936,7 +1921,7 @@
 
 <!-- Amenities page -->
 
-    <div class="site-section display-hidden" data-name="amenities" data-type="interactive-block">
+    <div class="site-section display-hidden" data-name="amenities" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -1950,7 +1935,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">AMENITIES</h2> 
 
           <p class="text">
@@ -2024,7 +2009,7 @@
 
 <!-- Admission page -->
 
-    <div class="site-section display-hidden" data-name="admission" data-type="interactive-block">
+    <div class="site-section display-hidden" data-name="admission" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2038,7 +2023,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">ADMISSION</h2> 
 
           <p class="text">
@@ -2471,7 +2456,7 @@
 
 <!-- Ancient world page -->
 
-    <div class="site-section display-hidden" data-name="ancient-world" data-type="interactive-block">
+    <div class="site-section secondary-page ancient-world-page display-hidden" data-name="ancient-world" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2502,7 +2487,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">ANCIENT WORLD</h2> 
 
           <p class="text">
@@ -2558,7 +2543,7 @@
 
 <!-- History of weapons page -->
 
-    <div class="site-section display-hidden" data-name="history-of-weapons" data-type="interactive-block">
+    <div class="site-section secondary-page history-of-weapons-page display-hidden" data-name="history-of-weapons" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2589,7 +2574,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">HISTORY OF WEAPONS</h2> 
 
           <p class="text">
@@ -2646,7 +2631,7 @@
 
 <!-- Human evolution page -->
 
-    <div class="site-section display-hidden" data-name="human-evolution" data-type="interactive-block">
+    <div class="site-section secondary-page human-evolution-page display-hidden" data-name="human-evolution" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2677,7 +2662,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">HUMAN EVOLUTION</h2> 
 
           <p class="text">
@@ -2741,7 +2726,7 @@
 
 <!-- Paleontology page -->
 
-    <div class="site-section display-hidden" data-name="paleontology" data-type="interactive-block">
+    <div class="site-section secondary-page paleontology-page display-hidden" data-name="paleontology" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2772,7 +2757,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">PALEONTOLOGY</h2> 
 
           <p class="text">
@@ -2831,7 +2816,7 @@
 
 <!-- Wild life page -->
 
-    <div class="site-section display-hidden" data-name="wild-life" data-type="interactive-block">
+    <div class="site-section secondary-page wild-life-page display-hidden" data-name="wild-life" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2862,7 +2847,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">WILD LIFE</h2> 
 
           <p class="text">
@@ -2922,7 +2907,7 @@
 
 <!-- Fossils in Focus page -->
 
-    <div class="site-section display-hidden" data-name="fossils-in-focus" data-type="interactive-block">
+    <div class="site-section display-hidden" data-name="fossils-in-focus" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -2939,7 +2924,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">FOSSILS IN FOCUS</h2> 
 
           <p class="text">
@@ -3004,7 +2989,7 @@
 
 <!-- Mummies page -->
 
-    <div class="site-section display-hidden" data-name="mummies" data-type="interactive-block">
+    <div class="site-section display-hidden" data-name="mummies" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -3021,7 +3006,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">MUMMIES</h2> 
 
           <p class="text">
@@ -3082,7 +3067,7 @@
 
 <!-- The Titanosaur page -->
 
-    <div class="site-section display-hidden" data-name="the-titanosaur" data-type="interactive-block">
+    <div class="site-section display-hidden" data-name="the-titanosaur" data-type="interactive-block" data-searchable>
       <div class="breadcrumbs">
         <button class="button">
           <span data-type="button" data-target="main-page" data-function="nav-button">Main Page</span>
@@ -3099,7 +3084,7 @@
       </div>
       
       <div class="site-section_content">
-        <div class="main-page_section-description">
+        <div class="site_section-description">
           <h2 class="heading-h1">THE TITANOSAUR</h2> 
 
           <p class="text">
@@ -3173,26 +3158,14 @@
       </div>
 
       <div class="site-section_content">
-        <h2 class="heading-h2">You searched for:</h2> 
+        <h2 class="heading-h3">You searched for: <span class="search-query"></span></h2> 
       </div>
 
-      <div class="site-section_content">
-        <h2 class="heading-h2">Search results</h2> 
+      <div>
+        <h2 class="heading-h1">Search results</h2>
+      </div>
 
-        <div class="main-page_section-exhibit-preview">
-          <div class="main-page_section-image-container">
-            <div class="main-page_section-image paleontology-image">
-            </div>
-          </div>
-
-          <div class="main-page_section-exhibit-description">
-            <h2 class="heading-h2">Paleontology</h2> 
-
-            <p class="text"> 
-             Walk among one of the largest collections of dinosaur skeletons in the world. Explore a startlingly different world of giant animals: woolly mammoths, mastodons, and sabre-toothed cats.
-            </p>
-          </div>
-        </div>
+      <div class="site-section_content search-results-list">
       </div>
     </div>
   
@@ -3247,6 +3220,9 @@
         </p>
       </div>
     </footer>
+  </div>
+
+  <div class="blurry-screen display-hidden" data-type="button" data-target="gallery-section" data-function="unblur-screen"> 
   </div>
 
   <script defer src="../script/main.js"></script>

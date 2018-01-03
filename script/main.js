@@ -11,29 +11,138 @@
 		main();
 	} else {
 		document.addEventListener("DOMContentLoaded", main, false);
-	}; 
+	};
 
 	function main() {
-		const buttons = document.querySelectorAll('[data-type="button"]');
-		const outerWrapper = document.getElementsByClassName("main")[0]; 
+		const outerWrapper = document.getElementsByClassName("main")[0];
 		const mainPage = document.getElementsByClassName("main-page")[0];
 		const secondaryPages = document.querySelectorAll('[data-type="interactive-block"]');
 
-		const attachListeners = function(arrayLikeObject, callBackFunction) {
-			return Array.prototype.slice.call(arrayLikeObject).forEach(function(obj) {
-				obj.addEventListener("click", callBackFunction, false); 
-			}); 
-		}; 
+		let buttons;
 
 		const handlePseudoArray = function(arrayLikeObject, callBackFunction) {
 			if (callBackFunction) {
-				return Array.prototype.slice.call(arrayLikeObject).forEach(callBackFunction); 
+				return Array.prototype.slice.call(arrayLikeObject).forEach(callBackFunction);
 			} else {
-				return Array.prototype.slice.call(arrayLikeObject); 
-			}; 
-		}; 
+				return Array.prototype.slice.call(arrayLikeObject);
+			};
+		};
 
-		/* Buttons onclick handler */
+		const attachListeners = function(arrayLikeObject, callBackFunction, eventType) {
+			return handlePseudoArray(arrayLikeObject, function(obj) {
+				obj.addEventListener(eventType, callBackFunction, false);
+			});
+		};
+
+		const filterUniqueElements = function(array) {
+			var seenElements = {};
+
+			array.sort(function(a, b) {
+				return (a - b); 
+			});
+			
+			return array.filter(function(x) {
+				if (seenElements[x]) {
+					return;
+				};
+				
+				seenElements[x] = true;
+				
+				return x;
+			});
+		};
+
+		/* Handle gallery images layout and pagination */
+
+		const handleGallery = function(currentPage, sortImages, handlePages) {
+			const galleryImagesContainer = document.getElementsByClassName("gallery_images_preview")[0];
+			const galleryPagesContainer = document.getElementsByClassName("gallery_images_pages-container")[0];
+			const galleryImagesSrc = "../images/Gallery/";
+			
+			let galleryElements;
+			let galleryElementsContainers;
+			let documentFragment;
+			let galleryPage;
+			let visibleGalleryElements;
+			let visibleGalleryElementsLength;
+			let numberOfPages;
+
+			currentPage = (currentPage !== undefined) ? currentPage : 1;
+			sortImages = (sortImages !== undefined) ? sortImages : true;
+			handlePages = (handlePages !== undefined) ? handlePages : true;
+
+			galleryElements = handlePseudoArray(document.getElementsByClassName("gallery_image"));
+			galleryElementsContainers = handlePseudoArray(document.getElementsByClassName("gallery_image-container"));
+
+			/* Randomize images sequence */
+			if (sortImages) {
+				galleryElementsContainers.sort(function(a, b) {
+					return (Math.random() * galleryElements.indexOf(a) - Math.random() * galleryElements.indexOf(b));
+				});
+
+				galleryImagesContainer.innerHTML = "";
+
+				documentFragment = document.createDocumentFragment();
+
+				galleryElementsContainers.forEach(function(obj) {
+					documentFragment.appendChild(obj);
+				});
+
+				galleryImagesContainer.appendChild(documentFragment);
+			};
+
+			visibleGalleryElements = galleryElements.filter(function(obj) {
+				return (!obj.parentNode.classList.contains("display-image-removed"));
+			}); 
+
+			visibleGalleryElementsLength = visibleGalleryElements.length;
+
+			numberOfPages = Math.ceil(visibleGalleryElementsLength / 9);
+
+			if (handlePages) {
+				documentFragment = document.createDocumentFragment();
+				galleryPagesContainer.innerHTML = "";
+
+				for (let i = 1; i <= numberOfPages; i += 1) {
+					galleryPage = document.createElement("p");
+					galleryPage.classList.add("gallery_images_page");
+					galleryPage.setAttribute("data-type", "button");
+					galleryPage.setAttribute("data-target", "gallery-section");
+					galleryPage.setAttribute("data-function", "gallery-pagination");
+					galleryPage.setAttribute("data-page", i);
+					galleryPage.innerHTML = i;
+					documentFragment.appendChild(galleryPage);
+				};
+
+				galleryPagesContainer.appendChild(documentFragment);
+			};
+
+			visibleGalleryElements.forEach(function(obj) {
+				obj.setAttribute("data-page", (Math.floor(visibleGalleryElements.indexOf(obj) / 9 + 1))); 
+
+				if (parseInt(obj.getAttribute("data-page")) !== currentPage) {
+					obj.parentNode.classList.add("display-image-hidden");
+				} else {
+					if (!obj.getAttribute("src")) {
+						const galleryElementGroup = obj.getAttribute("data-group");
+						const galleryElementName = obj.getAttribute("data-name");
+						const galleryElementSrc = galleryImagesSrc + galleryElementGroup + "/" + galleryElementName;
+
+						obj.setAttribute("src", galleryElementSrc);
+					};
+
+					if (obj.parentNode.classList.contains("display-image-hidden")) {
+						obj.parentNode.classList.remove("display-image-hidden");
+					};
+				};
+			});
+		};
+
+		handleGallery();
+
+		buttons = document.querySelectorAll('[data-type="button"]');
+
+		/* Buttons and active elements onclick-handler */
 
 		const handleRelocations = function(e) {
 			const triggerNode = e.target;
@@ -43,6 +152,7 @@
 			const targetNode = targetNodes[0];
 
 			let targetType;
+			let sameNodeTypes; 
 			let triggerName; 
 			let triggerNodeSubfunction; 
 
@@ -58,7 +168,7 @@
 				triggerNodeSubfunction = triggerNode.getAttribute("data-subfunction");
 			}; 
 
-			const sameNodeTypes = document.querySelectorAll('[data-type="'+targetType+'"]');
+			sameNodeTypes = document.querySelectorAll('[data-type="'+targetType+'"]');
 			
 			switch (triggerNodeFunction) { 
 				case "nav-button": {
@@ -128,10 +238,77 @@
 						}
 					};
 
-					break;
-				}
+					switch (triggerNodeSubfunction) {
+						case "search-button": {
+							const searchableContent = handlePseudoArray(document.querySelectorAll('[data-searchable]'));
+							const searchResultsSection = targetNode.getElementsByClassName("search-results-list")[0];
+							const searchInputTextfield = document.getElementsByClassName("input_textfield-search")[0];
 
-				case "search-button": {
+							let searchQuery = document.getElementsByClassName("input_textfield-search")[0].value;
+							let searchResults = [];
+							let fragment;
+							let searchResultBlock;
+							let sitePage;
+							let sitePageHeading;
+							let sitePageDescription;
+
+							targetNode.querySelector(".search-query").innerHTML = '"' + searchQuery + '"';
+
+							searchQuery = searchQuery.toString().toLowerCase().trim();
+							searchQuery = searchQuery + " " + searchQuery.replace(/[^\w]/g, ' ');
+							searchQuery = searchQuery.split(' ');
+							searchQuery.filter(function(elem) {
+								return /\S/.test(elem);
+							});
+
+							searchQuery = filterUniqueElements(searchQuery);
+
+							searchableContent.forEach(function(obj) {
+								searchQuery.forEach(function(elem) {
+									let regExp = new RegExp("\\s?" + elem + "\\s?", "gim");
+
+									if (obj.innerHTML.toString().match(regExp)) {
+										searchResults.push(obj.getAttribute("data-name") || obj.getAttribute("data-target"));
+									};
+								});
+							});
+
+							searchResults = filterUniqueElements(searchResults);
+
+							searchResults.forEach(function(obj) {
+								searchResultBlock = document.createElement("div");
+								searchResultBlock.classList.add("main-page_section-exhibit-preview", "search-results-page_section");
+								searchResultBlock.innerHTML = '<div class="search-results-page_subsection" data-type="button" data-target data-function="nav-button">' + 
+																							'<h2 class="heading-h2" data-type="button" data-target data-function="nav-button"></h2>' + 
+																				  		'<p class="text" data-type="button" data-target data-function="nav-button">' + 
+																							'</p>'
+																							'</div>';
+
+								sitePage = document.querySelector('[data-name="'+obj+'"]');
+								fragment = document.createDocumentFragment();
+
+								sitePageHeading = sitePage.querySelector(".heading-h1").innerHTML || "";
+								sitePageDescription = sitePage.querySelector(".text").innerHTML || "";
+
+								searchResultBlock.setAttribute("data-target", obj);
+
+								searchResultBlock.querySelector(".heading-h2").setAttribute("data-target", obj);
+								searchResultBlock.querySelector(".text").setAttribute("data-target", obj);
+
+								searchResultBlock.querySelector(".heading-h2").innerHTML = sitePageHeading;
+								searchResultBlock.querySelector(".text").innerHTML = sitePageDescription;
+
+								fragment.appendChild(searchResultBlock);
+								searchResultsSection.appendChild(fragment);
+							});
+
+							buttons = document.querySelectorAll('[data-type="button"]');
+
+							attachListeners(buttons, handleRelocations, "click");
+						}
+
+						break;
+					};
 
 					break;
 				}
@@ -196,6 +373,7 @@
 					let visitLength;
 					let visitLengthValue; 
 					let visitDate;
+					let visitDateValue; 
 					let visitTime;
 					let visitTimeValue;
 					let visitTimeOfTheDay; 
@@ -205,6 +383,7 @@
 					let visitorsAgeSection;
 					let selectedProgram;
 					let selectedExhibits; 
+					let numberOfSelectedExhibits; 
 					let programsSection;
 					let fullDayProgramsSection;
 					let adultsProgramsSection;
@@ -217,6 +396,7 @@
 					let numberOfBeneficiaries;
 					let numberOfVisitors; 
 					let totalCost; 
+					let personalData; 
 					let totalTicketsCost = 0;
 					let totalNumberOfVisitors = 0;
 
@@ -229,18 +409,19 @@
 					triggerNodeParrentWrapper = triggerNodeParrent.parentNode;
 					triggerNodeNextSibling = triggerNodeParrent.nextElementSibling;
 
-					if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-hidden")) {
+					if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-hidden") && 
+						 !triggerNode.classList.contains("confirm-order-button")) {
 						triggerNodeNextSibling.classList.remove("main-page_subsection-block-hidden");
-					}; 
+					};
 
 					if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-removed")) {
 						triggerNodeNextSibling.nextElementSibling.classList.remove("main-page_subsection-block-hidden");
-					}
+					};
 
 					visitType = triggerNodeParrentWrapper.querySelector('[name="admission"]:checked');
-					visitLength = triggerNodeParrentWrapper.querySelector('[name="days"]:checked'); 
-					visitDate = triggerNodeParrentWrapper.querySelector('[name="date"]'); 
-					visitTime = triggerNodeParrentWrapper.querySelector('[name="part-of-the-day"]:checked'); 
+					visitLength = triggerNodeParrentWrapper.querySelector('[name="days"]:checked');
+					visitDate = triggerNodeParrentWrapper.querySelector('[name="date"]');
+					visitTime = triggerNodeParrentWrapper.querySelector('[name="part-of-the-day"]:checked');
 					visitTimeOfTheDay = triggerNodeParrentWrapper.querySelector('[name="time"]:checked'); 
 					visitorsAge = triggerNodeParrentWrapper.querySelector('[name="age"]:checked');
 					selectedProgram = triggerNodeParrentWrapper.querySelector('[name="program"]:checked');
@@ -249,22 +430,26 @@
 					numberOfYoungerChildren = triggerNodeParrentWrapper.querySelector('[name="younger-children"]');
 					numberOfOlderChildren = triggerNodeParrentWrapper.querySelector('[name="older-children"]');
 					numberOfBeneficiaries = triggerNodeParrentWrapper.querySelector('[name="beneficiaries"]');
-					programsSection = triggerNodeParrentWrapper.querySelector(".programs-section");				
+					programsSection = triggerNodeParrentWrapper.querySelector(".programs-section");
+					numberOfVisitors = triggerNodeParrentWrapper.querySelector(".visitors-number");
+					totalCost = triggerNodeParrentWrapper.querySelector(".total-cost");
 					visitorsAgeSection = triggerNodeParrentWrapper.querySelectorAll(".visitors-age-section");
 					fullDayProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".full-day-programs-section");
 					halfDayProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".half-day-programs-section");
 					adultsProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".adults-programs-section");
 					youngerChildrenProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".younger-children-programs-section");
 					olderChildrenProgramsSection = triggerNodeParrentWrapper.querySelectorAll(".older-children-programs-section");
-					numberOfVisitors = triggerNodeParrentWrapper.querySelector(".visitors-number");
-					totalCost = triggerNodeParrentWrapper.querySelector(".total-cost");
+					personalData = triggerNodeParrentWrapper.querySelectorAll(".personal-data");
+
 					visitTypeValue = (visitType) ? visitType.value : "none";
 					visitLengthValue = (visitLength) ? visitLength.value : "none";
 					visitTimeValue = (visitTime) ? visitTime.value : "none";
+					visitDateValue = (visitDate) ? visitDate.value : "none";
 					visitorsAgeValue = (visitorsAge) ? visitorsAge.value : "none";
 					visitTimeOfTheDayValue = (visitTimeOfTheDay) ? visitTimeOfTheDay.value : "none";
+					numberOfSelectedExhibits = (selectedExhibits) ? handlePseudoArray(selectedExhibits).length : 0;
 					
-					totalNumberOfVisitors = function() {
+					totalNumberOfVisitors = (function() {
 						let result = (
 							parseInt(numberOfAdults.value) + 
 							parseInt(numberOfYoungerChildren.value) + 
@@ -279,9 +464,9 @@
 						};
 
 						return result;
-					};
+					})();
 
-					totalTicketsCost = function() {
+					totalTicketsCost = (function() {
 						let constructProgram = (targetName === "construct-program") ? 1 : 0;
 						let freeAdmission = (visitTypeValue === "free-admission") ? 1 : 0;
 						let programAdmission = (visitTypeValue === "program") ? 1 : 0;
@@ -290,9 +475,6 @@
 						let fullDayAdmission = (visitTimeValue === "full-day") ? 1 : 0;
 						let halfDayAdmission = (visitTimeValue === "half-day") ? 0.5 : 0;
 						let timeOfVisit = (visitTimeOfTheDayValue === "full-day") ? 1 : 0.5;
-						let numberOfSelectedExhibits = (selectedExhibits) ? handlePseudoArray(selectedExhibits).length : 0; 
-
-						console.log(numberOfSelectedExhibits);
 
 						let relativeVisitorsQuantity = (
 							parseInt(numberOfAdults.value) + 
@@ -310,10 +492,10 @@
 						);
 
 						return result;
-					};
+					})();
 
-					numberOfVisitors.innerHTML = totalNumberOfVisitors(); 
-					totalCost.innerHTML = totalTicketsCost(); 
+					numberOfVisitors.innerHTML = totalNumberOfVisitors; 
+					totalCost.innerHTML = totalTicketsCost; 
 
 					switch (visitTypeValue) {
 						case "free-admission": {
@@ -386,59 +568,205 @@
 										obj.setAttribute("disabled", "disabled"); 
 									})); 
 
-									break; 
+									break;
 								}
 
 								case "adults": {
 									handlePseudoArray(youngerChildrenProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
 									handlePseudoArray(olderChildrenProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
-									break; 
+									break;
 								}
 							};
 
-							break; 
+							break;
 						}
 					};
 
-					if (triggerNodeFunction === "purchase-button") {
+					if (triggerNodeSubfunction === "purchase-button") {
+						const currentDate = new Date().getTime();
+						const userSetDate = (visitDateValue) ? (new Date(visitDateValue).getTime()) : 0;
+						const validName = /^[a-zA-Z0-9.'\-_\s]{1,20}$/;
+						const validTelephone = /^380\d{9,9}$/;
+						const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+						let formsValidity = false;
+
+						/*Check froms validity*/
+						const checkFormsValidation = (function() {
+							if (!userSetDate || (userSetDate <= currentDate)) {
+								visitDate.setCustomValidity("Please select a valid visit day!");
+								formsValidity = false;
+								return;
+							} else {
+								visitDate.setCustomValidity("");
+								formsValidity = true;
+							};
+
+							if (totalNumberOfVisitors <= 0) {
+								numberOfAdults.setCustomValidity("Please enter at least one visitor!");
+								formsValidity = false;
+								return;
+							} else {
+								visitDate.setCustomValidity("");
+								formsValidity = true;
+							};
+
+							handlePseudoArray(personalData, function(obj) {
+								if (obj.getAttribute("name") === "first-name" || "last-name") {
+									if (!obj.value || !obj.value.test(validName)) {
+										obj.setCustomValidity("Please enter a valid name!");
+										formsValidity = false;
+										return;
+									} else {
+										obj.setCustomValidity("");
+										formsValidity = true;
+									};
+								} else if (obj.getAttribute("name") === "telephone-number") {
+									if (!obj.value || !obj.value.test(validTelephone)) {
+										obj.setCustomValidity("Please enter a valid telephone number!");
+										formsValidity = false;
+										return;
+									} else {
+										obj.setCustomValidity("");
+										formsValidity = true;
+									};
+
+								} else if (obj.getAttribute("name") === "email") {
+									if (!obj.value || !obj.value.test(validEmail)) {
+										obj.setCustomValidity("Please enter a valid email!");
+										formsValidity = false;
+										return;
+									} else {
+										obj.setCustomValidity("");
+										formsValidity = true;
+									};
+								}; 
+							}); 
+
+							/*If all forms are valid*/
+							if (formValidity) {
+								triggerNodeParrentWrapper.querySelector(".order-date").innerHTML = visitDateValue;
+								triggerNodeParrentWrapper.querySelector(".order-time").innerHTML = visitTimeValue;
+								triggerNodeParrentWrapper.querySelector(".order-visitors").innerHTML = totalNumberOfVisitors;
+								triggerNodeParrentWrapper.querySelector(".order-total-cost").innerHTML = totalTicketsCost;
+
+								if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-hidden")) {
+									triggerNodeNextSibling.classList.remove("main-page_subsection-block-hidden");
+								};
+
+								return;
+							}; 
+						})();
+					};
+
+					break;
+				}
+
+				case "gallery-pagination": {
+					const selectedPage = parseInt(triggerNode.getAttribute("data-page"));
+					handleGallery(selectedPage, false, false);
+
+					break;
+				}
+
+				case "gallery-options": {
+					const galleryElements = handlePseudoArray(targetNode.getElementsByClassName("gallery_image"));
 					
-						if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-hidden")) {
-							triggerNodeNextSibling.classList.remove("main-page_subsection-block-hidden");
-						}; 
-					}; 
+					triggerNode.addEventListener("change", function(e) {
+						const selectedOption = triggerNode.options[triggerNode.selectedIndex];
+						const targetImagesGroup = selectedOption.getAttribute("data-group");
 
-					break; 
+						galleryElements.forEach(function(obj) {
+
+							if (targetImagesGroup === "All") {
+								if (obj.parentNode.classList.contains("display-image-removed")) {
+									obj.parentNode.classList.remove("display-image-removed");
+								};
+								return;
+							} else {
+								if (obj.getAttribute("data-group") !== targetImagesGroup) {
+									if (!obj.parentNode.classList.contains("display-image-removed")) {
+										obj.parentNode.classList.add("display-image-removed");
+									};
+								}; 
+
+								if (obj.getAttribute("data-group") === targetImagesGroup) {
+									if (obj.parentNode.classList.contains("display-image-removed")) {
+										obj.parentNode.classList.remove("display-image-removed");
+									};
+								};
+							}; 
+						});
+
+						handleGallery(1, false, true);
+						buttons = document.querySelectorAll('[data-type="button"]');
+						attachListeners(buttons, handleRelocations, "click");
+					}, false);
+
+					break;
+				}
+
+				case "show-image": {
+					let blurryScreen = document.getElementsByClassName("blurry-screen")[0];
+
+					if (
+						!targetNode.hasAttribute("data-state") || 
+						targetNode.getAttribute("data-state") !== "selected"
+					) {
+						targetNode.classList.add("gallery_image-select");
+						targetNode.setAttribute("data-state", "selected");
+					} else {
+						targetNode.classList.remove("gallery_image-select");
+						targetNode.removeAttribute("data-state");
+					};
+
+					if (!blurryScreen.classList.contains("display-hidden")) {
+						blurryScreen.classList.add("display-hidden");
+					} else {
+						blurryScreen.classList.remove("display-hidden");
+					};
+
+					break;
+				}
+
+				case "unblur-screen": {
+					let selectedImage = targetNode.querySelector('[data-state="selected"]');
+
+					triggerNode.classList.add("display-hidden");
+					selectedImage.classList.remove("gallery_image-select");
+					selectedImage.removeAttribute("data-state");
+
+					break;
 				}
 			};
 
-			e.preventDefault(); 
-			e.stopPropagation(); 
-		}; 
+			e.preventDefault();
+			e.stopPropagation();
+		};
 
-		attachListeners(buttons, handleRelocations);
-		 
+		attachListeners(buttons, handleRelocations, "click");
+				 
 		/* Landing page slideshow */
 
 		const landingPageSlideShow = (function() {
-			const slides = document.getElementsByClassName("landing-page_slide"); 
+			const slides = document.getElementsByClassName("landing-page_slide");
 			const backgroundSlides = document.getElementsByClassName("landing-page_background");
-			const landingPageButton = document.getElementsByClassName("landing-page-button")[0]; 
+			const landingPageButton = document.getElementsByClassName("landing-page-button")[0];
 
-			let currentSlide = 0; 
+			let currentSlide = 0;
 			let currentBackgroundSlide = 0;
 
 			const generatePosition = function() {
 				let randX = Math.round(Math.random() * 100);
 				let randY = Math.round(Math.random() * 100);
 
-				return ("background-position: " + randX + "% " + randY + "%")
+				return ("background-position: " + randX + "% " + randY + "%"); 
 			};
 
 			slides[currentSlide].setAttribute("style", generatePosition());
@@ -450,23 +778,25 @@
 				currentSlide = (n + slides.length) % slides.length;
 
 				slides[currentSlide].classList.add("landing-page_slide-visible");
-				slides[currentSlide].setAttribute("style", generatePosition()); 
+				slides[currentSlide].setAttribute("style", generatePosition());
 				backgroundSlides[currentSlide].classList.add("landing-page_background-visible");
 			};
 			
 			const nextSlide = function() {
-				goToSlide(currentSlide + 1); 
-			}; 
+				goToSlide(currentSlide + 1);
+			};
 
 			const slideInterval = setInterval(nextSlide, 4000);
 
 			landingPageButton.addEventListener("click", function() {
-				clearInterval(slideInterval); 
-			}, false); 
+				clearInterval(slideInterval);
+			}, false);
 		})();
+
+		/* Increase height of low-height pages */
 
 		const adjustSectionsHeight = (function() {
 
-		})(); 
-	}; 
+		})();
+	};
 })();
