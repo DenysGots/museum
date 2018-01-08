@@ -127,7 +127,9 @@
 			};
 
 			visibleGalleryElements = galleryElements.filter(function(obj) {
-				return (!obj.parentNode.classList.contains("display-image-removed"));
+				if (obj.parentNode) {
+					return (!obj.parentNode.classList.contains("display-image-removed"));
+				};
 			});
 
 			visibleGalleryElementsLength = visibleGalleryElements.length;
