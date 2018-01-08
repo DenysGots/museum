@@ -27,6 +27,10 @@
 		/* Transform array-like object to array and apply function for each element */
 
 		const handlePseudoArray = function(arrayLikeObject, callBackFunction) {
+			if (typeof (NodeList.prototype.forEach) !== "function") {
+				NodeList.prototype.forEach=Array.prototype.forEach;
+			};
+
 			if (callBackFunction) {
 				return Array.prototype.slice.call(arrayLikeObject).forEach(callBackFunction);
 			} else {
@@ -106,11 +110,16 @@
 			sortImages = (sortImages !== undefined) ? sortImages : true;
 			handlePages = (handlePages !== undefined) ? handlePages : true;
 
-			galleryElements = handlePseudoArray(document.getElementsByClassName("gallery_image"));
-			galleryElementsContainers = handlePseudoArray(document.getElementsByClassName("gallery_image-container"));
+			galleryElements = document.getElementsByClassName("gallery_image");
+			galleryElementsContainers = document.getElementsByClassName("gallery_image-container");
+
+			if (!(/*@cc_on!@*/false || !!document.documentMode)) {		// IE node lists to array issues workaround
+				galleryElements = handlePseudoArray(galleryElements);
+				galleryElementsContainers = handlePseudoArray(galleryElementsContainers);
+			};
 
 			/* Randomize images sequence */
-			if (sortImages) {
+			if (sortImages && Array.isArray(galleryElementsContainers)) {
 				galleryElementsContainers.sort(function(a, b) {
 					return (Math.random() * galleryElements.indexOf(a) - Math.random() * galleryElements.indexOf(b));
 				});
@@ -126,13 +135,31 @@
 				galleryImagesContainer.appendChild(documentFragment);
 			};
 
-			visibleGalleryElements = galleryElements.filter(function(obj) {
-				if (obj.parentNode) {
+			if (Array.isArray(galleryElements)) {
+				visibleGalleryElements = galleryElements.filter(function(obj) {
 					return (!obj.parentNode.classList.contains("display-image-removed"));
-				};
-			});
+				});
+			} else {		// IE node lists to array issues workaround
+				visibleGalleryElements = {};
 
-			visibleGalleryElementsLength = visibleGalleryElements.length;
+				for (let prop in galleryElements) {
+					if (galleryElements.propertyIsEnumerable(prop) && !galleryElements[prop].parentNode.classList.contains("display-image-removed")) {
+						visibleGalleryElements[prop] = galleryElements[prop];
+					};
+				};
+			};
+
+			if (Array.isArray(visibleGalleryElements)) {
+				visibleGalleryElementsLength = visibleGalleryElements.length;
+			} else {		// IE node lists to array issues workaround
+				let count = 0;
+
+				for (let prop in visibleGalleryElements) {
+					count += 1;
+				};
+
+				visibleGalleryElementsLength = count;
+			};
 
 			numberOfPages = Math.ceil(visibleGalleryElementsLength / 9);
 
@@ -140,7 +167,7 @@
 				documentFragment = document.createDocumentFragment();
 				galleryPagesContainer.innerHTML = "";
 
-				for (let i = 1;i <= numberOfPages;i += 1) {
+				for (let i = 1; i <= numberOfPages; i += 1) {
 					galleryPage = document.createElement("p");
 					galleryPage.classList.add("gallery_images_page");
 					galleryPage.setAttribute("data-type", "button");
@@ -154,25 +181,53 @@
 				galleryPagesContainer.appendChild(documentFragment);
 			};
 
-			visibleGalleryElements.forEach(function(obj) {
-				obj.setAttribute("data-page", (Math.floor(visibleGalleryElements.indexOf(obj) / 9 + 1)));
+			if (Array.isArray(visibleGalleryElements)) {
+				visibleGalleryElements.forEach(function(obj) {
+					obj.setAttribute("data-page", (Math.floor(visibleGalleryElements.indexOf(obj) / 9 + 1)));
 
-				if (parseInt(obj.getAttribute("data-page")) !== currentPage) {
-					obj.parentNode.classList.add("display-image-hidden");
-				} else {
-					if (!obj.getAttribute("src")) {
-						const galleryElementGroup = obj.getAttribute("data-group");
-						const galleryElementName = obj.getAttribute("data-name");
-						const galleryElementSrc = galleryImagesSrc + galleryElementGroup + "/" + galleryElementName;
+					if (parseInt(obj.getAttribute("data-page")) !== currentPage) {
+						obj.parentNode.classList.add("display-image-hidden");
+					} else {
+						if (!obj.getAttribute("src")) {
+							const galleryElementGroup = obj.getAttribute("data-group");
+							const galleryElementName = obj.getAttribute("data-name");
+							const galleryElementSrc = galleryImagesSrc + galleryElementGroup + "/" + galleryElementName;
 
-						obj.setAttribute("src", galleryElementSrc);
+							obj.setAttribute("src", galleryElementSrc);
+						};
+
+						if (obj.parentNode.classList.contains("display-image-hidden")) {
+							obj.parentNode.classList.remove("display-image-hidden");
+						};
 					};
+			});
+			} else {		// IE node lists to array issues workaround
+				let count = 0;
 
-					if (obj.parentNode.classList.contains("display-image-hidden")) {
-						obj.parentNode.classList.remove("display-image-hidden");
+				for (let prop in visibleGalleryElements) {
+					if (visibleGalleryElements.propertyIsEnumerable(prop)) {
+						visibleGalleryElements[prop].setAttribute("data-page", (Math.floor(count / 9 + 1)));
+
+						if (parseInt(visibleGalleryElements[prop].getAttribute("data-page")) !== currentPage) {
+							visibleGalleryElements[prop].parentNode.classList.add("display-image-hidden");
+						} else {
+							if (!visibleGalleryElements[prop].getAttribute("src")) {
+								const galleryElementGroup = visibleGalleryElements[prop].getAttribute("data-group");
+								const galleryElementName = visibleGalleryElements[prop].getAttribute("data-name");
+								const galleryElementSrc = galleryImagesSrc + galleryElementGroup + "/" + galleryElementName;
+
+								visibleGalleryElements[prop].setAttribute("src", galleryElementSrc);
+							};
+
+							if (visibleGalleryElements[prop].parentNode.classList.contains("display-image-hidden")) {
+								visibleGalleryElements[prop].parentNode.classList.remove("display-image-hidden");
+							};
+						};
+
+						count += 1;
 					};
 				};
-			});
+			};
 		};
 
 		/* Landing page slideshow */
@@ -756,33 +811,60 @@
 				}
 
 				case "gallery-options": {
-					const galleryElements = handlePseudoArray(targetNode.getElementsByClassName("gallery_image"));
+					let galleryElements = targetNode.getElementsByClassName("gallery_image");
+
+					if (!(/*@cc_on!@*/false || !!document.documentMode)) {		// IE node lists to array issues workaround
+						galleryElements = handlePseudoArray(galleryElements);
+					};
 					
 					triggerNode.addEventListener("change", function(e) {
 						const selectedOption = triggerNode.options[triggerNode.selectedIndex];
 						const targetImagesGroup = selectedOption.getAttribute("data-group");
 
-						galleryElements.forEach(function(obj) {
-
-							if (targetImagesGroup === "All") {
-								if (obj.parentNode.classList.contains("display-image-removed")) {
-									obj.parentNode.classList.remove("display-image-removed");
-								};
-								return;
-							} else {
-								if (obj.getAttribute("data-group") !== targetImagesGroup) {
-									if (!obj.parentNode.classList.contains("display-image-removed")) {
-										obj.parentNode.classList.add("display-image-removed");
-									};
-								};
-
-								if (obj.getAttribute("data-group") === targetImagesGroup) {
+						if (Array.isArray(galleryElements)) {
+							galleryElements.forEach(function(obj) {
+								if (targetImagesGroup === "All") {
 									if (obj.parentNode.classList.contains("display-image-removed")) {
 										obj.parentNode.classList.remove("display-image-removed");
 									};
+									return;
+								} else {
+									if (obj.getAttribute("data-group") !== targetImagesGroup) {
+										if (!obj.parentNode.classList.contains("display-image-removed")) {
+											obj.parentNode.classList.add("display-image-removed");
+										};
+									};
+
+									if (obj.getAttribute("data-group") === targetImagesGroup) {
+										if (obj.parentNode.classList.contains("display-image-removed")) {
+											obj.parentNode.classList.remove("display-image-removed");
+										};
+									};
+								};
+							});
+						} else {		// IE node lists to array issues workaround
+							for (let prop in galleryElements) {
+								if (galleryElements.propertyIsEnumerable(prop)) {
+									if (targetImagesGroup === "All") {
+										if (galleryElements[prop].parentNode.classList.contains("display-image-removed")) {
+											galleryElements[prop].parentNode.classList.remove("display-image-removed");
+										};
+									} else {
+										if (galleryElements[prop].getAttribute("data-group") !== targetImagesGroup) {
+											if (!galleryElements[prop].parentNode.classList.contains("display-image-removed")) {
+												galleryElements[prop].parentNode.classList.add("display-image-removed");
+											};
+										};
+
+										if (galleryElements[prop].getAttribute("data-group") === targetImagesGroup) {
+											if (galleryElements[prop].parentNode.classList.contains("display-image-removed")) {
+												galleryElements[prop].parentNode.classList.remove("display-image-removed");
+											};
+										};
+									};
 								};
 							};
-						});
+						};
 
 						handleGallery(1, false, true);
 						buttons = document.querySelectorAll('[data-type="button"]');
