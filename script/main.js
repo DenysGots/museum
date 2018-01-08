@@ -17,8 +17,14 @@
 		const outerWrapper = document.getElementsByClassName("main")[0];
 		const mainPage = document.getElementsByClassName("main-page")[0];
 		const secondaryPages = document.querySelectorAll('[data-type="interactive-block"]');
+		const siteSections = document.getElementsByClassName("site-section");
+		const userIssuesWindow = document.getElementsByClassName("user-issues-section")[0];
+		const userIssuesMessage = document.getElementsByClassName("user-issues-message")[0];
+		const blurryScreen = document.getElementsByClassName("blurry-screen")[0];
 
 		let buttons;
+
+		/* Transform array-like object to array and apply function for each element */
 
 		const handlePseudoArray = function(arrayLikeObject, callBackFunction) {
 			if (callBackFunction) {
@@ -28,17 +34,21 @@
 			};
 		};
 
+		/* Attach listeners to elements */
+
 		const attachListeners = function(arrayLikeObject, callBackFunction, eventType) {
 			return handlePseudoArray(arrayLikeObject, function(obj) {
 				obj.addEventListener(eventType, callBackFunction, false);
 			});
 		};
 
+		/* Clear array from duplicate elements */
+
 		const filterUniqueElements = function(array) {
 			var seenElements = {};
 
 			array.sort(function(a, b) {
-				return (a - b); 
+				return (a - b);
 			});
 			
 			return array.filter(function(x) {
@@ -50,6 +60,31 @@
 				
 				return x;
 			});
+		};
+
+		/* Increase height of low-height pages */
+
+		const adjustSectionsHeight = function(node) {
+			const header = document.getElementsByClassName("header")[0];
+			const footer = document.getElementsByClassName("footer")[0];
+
+			let documentHeight;
+			let sectionHeight;
+		
+			if (window.screen.availHeight) {
+				documentHeight = window.screen.availHeight;
+			} else {
+				documentHeight = Math.max(
+					document.body.scrollHeight, document.documentElement.scrollHeight,  
+					document.body.offsetHeight, document.documentElement.offsetHeight,
+					document.body.clientHeight, document.documentElement.clientHeight, 
+					window.innerHeight
+				);
+			};
+			
+			sectionHeight = documentHeight - header.offsetHeight - header.style.marginBottom - footer.offsetHeight - footer.style.marginTop; 
+			
+			node.style.minHeight = sectionHeight + "px";
 		};
 
 		/* Handle gallery images layout and pagination */
@@ -93,7 +128,7 @@
 
 			visibleGalleryElements = galleryElements.filter(function(obj) {
 				return (!obj.parentNode.classList.contains("display-image-removed"));
-			}); 
+			});
 
 			visibleGalleryElementsLength = visibleGalleryElements.length;
 
@@ -103,7 +138,7 @@
 				documentFragment = document.createDocumentFragment();
 				galleryPagesContainer.innerHTML = "";
 
-				for (let i = 1; i <= numberOfPages; i += 1) {
+				for (let i = 1;i <= numberOfPages;i += 1) {
 					galleryPage = document.createElement("p");
 					galleryPage.classList.add("gallery_images_page");
 					galleryPage.setAttribute("data-type", "button");
@@ -118,7 +153,7 @@
 			};
 
 			visibleGalleryElements.forEach(function(obj) {
-				obj.setAttribute("data-page", (Math.floor(visibleGalleryElements.indexOf(obj) / 9 + 1))); 
+				obj.setAttribute("data-page", (Math.floor(visibleGalleryElements.indexOf(obj) / 9 + 1)));
 
 				if (parseInt(obj.getAttribute("data-page")) !== currentPage) {
 					obj.parentNode.classList.add("display-image-hidden");
@@ -138,35 +173,72 @@
 			});
 		};
 
-		handleGallery();
+		/* Landing page slideshow */
 
-		buttons = document.querySelectorAll('[data-type="button"]');
+		const landingPageSlideShow = (function() {
+			const slides = document.getElementsByClassName("landing-page_slide");
+			const backgroundSlides = document.getElementsByClassName("landing-page_background");
+			const landingPageButton = document.getElementsByClassName("landing-page-button")[0];
+
+			let currentSlide = 0;
+			let currentBackgroundSlide = 0;
+
+			const generatePosition = function() {
+				let randX = Math.round(Math.random() * 100);
+				let randY = Math.round(Math.random() * 100);
+
+				return ("background-position: " + randX + "% " + randY + "%");
+			};
+
+			slides[currentSlide].setAttribute("style", generatePosition());
+			 
+			const goToSlide = function(n) {
+				slides[currentSlide].classList.remove("landing-page_slide-visible");
+				backgroundSlides[currentSlide].classList.remove("landing-page_background-visible");
+
+				currentSlide = (n + slides.length) % slides.length;
+
+				slides[currentSlide].classList.add("landing-page_slide-visible");
+				slides[currentSlide].setAttribute("style", generatePosition());
+				backgroundSlides[currentSlide].classList.add("landing-page_background-visible");
+			};
+			
+			const nextSlide = function() {
+				goToSlide(currentSlide + 1);
+			};
+
+			const slideInterval = setInterval(nextSlide, 4000);
+
+			landingPageButton.addEventListener("click", function() {
+				clearInterval(slideInterval);
+			}, false);
+		})();
 
 		/* Buttons and active elements onclick-handler */
 
 		const handleRelocations = function(e) {
 			const triggerNode = e.target;
-			const triggerNodeFunction = triggerNode.getAttribute("data-function"); 
+			const triggerNodeFunction = triggerNode.getAttribute("data-function");
 			const targetName = triggerNode.getAttribute("data-target");
-			const targetNodes = document.querySelectorAll('[data-name="'+targetName+'"]'); 
+			const targetNodes = document.querySelectorAll('[data-name="'+targetName+'"]');
 			const targetNode = targetNodes[0];
 
 			let targetType;
-			let sameNodeTypes; 
-			let triggerName; 
-			let triggerNodeSubfunction; 
+			let sameNodeTypes;
+			let triggerName;
+			let triggerNodeSubfunction;
 
 			if (targetNode && targetNode.hasAttribute("data-type")) {
 				targetType = targetNode.getAttribute("data-type");
-			}; 
+			};
 			
 			if (triggerNode && triggerNode.hasAttribute("data-name")) {
 				triggerName = triggerNode.getAttribute("data-name");
-			}; 
+			};
 
 			if (triggerNode && triggerNode.hasAttribute("data-subfunction")) {
 				triggerNodeSubfunction = triggerNode.getAttribute("data-subfunction");
-			}; 
+			};
 
 			sameNodeTypes = document.querySelectorAll('[data-type="'+targetType+'"]');
 			
@@ -176,63 +248,70 @@
 						case "interactive-block": {
 							handlePseudoArray(sameNodeTypes, function(obj) {
 								if (!obj.classList.contains("display-hidden")) {
-									obj.classList.add("display-hidden"); 
+									obj.classList.add("display-hidden");
+									obj.style.minHeight = 0;
 								};
 							});
 
-							targetNode.classList.remove("display-hidden"); 
+							targetNode.classList.remove("display-hidden");
+
+							adjustSectionsHeight(targetNode);
 
 							if (targetName === "main-page") {
 								outerWrapper.scrollIntoView({block: "start", behavior: "smooth"});
 							} else {
 								targetNode.scrollIntoView({block: "start", behavior: "smooth"});
-							}; 
+							};
 
 							break;
 						}
 
 						case "interactive-section": {
+							handlePseudoArray(siteSections, function(obj) {
+								obj.style.minHeight = 0;
+							});
+
 							if (triggerName === targetName && targetNode.classList.contains("section-visible")) {
 								targetNode.classList.remove("section-visible");
 								outerWrapper.scrollIntoView({block: "start", behavior: "smooth"});
 							} else {
 								handlePseudoArray(sameNodeTypes, function(obj) {
 									if (obj.classList.contains("section-visible")) {
-										obj.classList.remove("section-visible"); 
+										obj.classList.remove("section-visible");
 									};
-								}); 
+								});
 
 								handlePseudoArray(secondaryPages, function(obj) {
 									if (!obj.classList.contains("display-hidden")) {
-										obj.classList.add("display-hidden"); 
+										obj.classList.add("display-hidden");
 									};
 								});
 
 								if (mainPage.classList.contains("display-hidden")) {
 									mainPage.classList.remove("display-hidden");
-								}; 
+								};
 
 								targetNode.classList.add("section-visible");
-								targetNode.scrollIntoView({block: "start", behavior: "smooth"}); 
-							}; 
+								targetNode.scrollIntoView({block: "start", behavior: "smooth"});
+							};
 
-							break; 
+							break;
 						}
 
 						case "interactive-header-section": {
 							if (targetNode.classList.contains("display-hidden")) {
 								handlePseudoArray(targetNodes, function(obj) {
 									obj.classList.remove("display-hidden");
-								}); 
+								});
 
-								targetNode.parentNode.classList.add("header_nav-submenu-container-expand"); 
+								targetNode.parentNode.classList.add("header_nav-submenu-container-expand");
 							} else {
 								handlePseudoArray(targetNodes, function(obj) {
 									obj.classList.add("display-hidden");
-								}); 
+								});
 
-								targetNode.parentNode.classList.remove("header_nav-submenu-container-expand"); 
-							}; 
+								targetNode.parentNode.classList.remove("header_nav-submenu-container-expand");
+							};
 
 							break;
 						}
@@ -314,18 +393,18 @@
 				}
 
 				case "slide-arrow": {
-					const slides = handlePseudoArray(targetNode.querySelectorAll('[data-name="slide"]')); 
-					const slidesLength = slides.length; 
+					const slides = handlePseudoArray(targetNode.querySelectorAll('[data-name="slide"]'));
+					const slidesLength = slides.length;
 
 					let currentSlide = slides.indexOf(slides.filter(function(elem) {
 						if (elem.classList.contains("slide-current")) {
-							return elem; 
+							return elem;
 						};
 					})[0]);
 
 					const goToSlide = function(n) {
 						return (slidesLength + currentSlide + n) % slides.length;
-					}; 
+					};
 
 					switch(triggerNodeSubfunction) {
 						case "left-slide-arrow": {
@@ -352,7 +431,7 @@
 							slides[goToSlide(1)].classList.add("slide-current");
 							
 							slides[goToSlide(2)].classList.remove("slide-hidden");
-							slides[goToSlide(2)].classList.add("slide-next"); 
+							slides[goToSlide(2)].classList.add("slide-next");
 							
 							slides[goToSlide(-1)].classList.remove("slide-prev");
 							slides[goToSlide(-1)].classList.add("slide-hidden");
@@ -371,19 +450,19 @@
 					let visitType;
 					let visitTypeValue;
 					let visitLength;
-					let visitLengthValue; 
+					let visitLengthValue;
 					let visitDate;
-					let visitDateValue; 
+					let visitDateValue;
 					let visitTime;
 					let visitTimeValue;
-					let visitTimeOfTheDay; 
-					let visitTimeOfTheDayValue; 
+					let visitTimeOfTheDay;
+					let visitTimeOfTheDayValue;
 					let visitorsAge;
 					let visitorsAgeValue;
 					let visitorsAgeSection;
 					let selectedProgram;
-					let selectedExhibits; 
-					let numberOfSelectedExhibits; 
+					let selectedExhibits;
+					let numberOfSelectedExhibits;
 					let programsSection;
 					let fullDayProgramsSection;
 					let adultsProgramsSection;
@@ -394,15 +473,15 @@
 					let numberOfYoungerChildren;
 					let numberOfOlderChildren;
 					let numberOfBeneficiaries;
-					let numberOfVisitors; 
-					let totalCost; 
-					let personalData; 
+					let numberOfVisitors;
+					let totalCost;
+					let personalData;
 					let totalTicketsCost = 0;
 					let totalNumberOfVisitors = 0;
 
 					for (
-						triggerNodeParrent = triggerNode.parentNode; 
-						!triggerNodeParrent.classList.contains("main-page_subsection-block"); 
+						triggerNodeParrent = triggerNode.parentNode;
+						!triggerNodeParrent.classList.contains("main-page_subsection-block");
 						triggerNodeParrent = triggerNodeParrent.parentNode
 					) {};
 
@@ -422,7 +501,7 @@
 					visitLength = triggerNodeParrentWrapper.querySelector('[name="days"]:checked');
 					visitDate = triggerNodeParrentWrapper.querySelector('[name="date"]');
 					visitTime = triggerNodeParrentWrapper.querySelector('[name="part-of-the-day"]:checked');
-					visitTimeOfTheDay = triggerNodeParrentWrapper.querySelector('[name="time"]:checked'); 
+					visitTimeOfTheDay = triggerNodeParrentWrapper.querySelector('[name="time"]:checked');
 					visitorsAge = triggerNodeParrentWrapper.querySelector('[name="age"]:checked');
 					selectedProgram = triggerNodeParrentWrapper.querySelector('[name="program"]:checked');
 					selectedExhibits = triggerNodeParrentWrapper.querySelectorAll('[name="exhibit"]:checked');
@@ -455,12 +534,12 @@
 							parseInt(numberOfYoungerChildren.value) + 
 							parseInt(numberOfOlderChildren.value) + 
 							parseInt(numberOfBeneficiaries.value)
-						); 
+						);
 
 						if (result === 1) {
-							result += " person"; 
+							result += " person";
 						} else {
-							result += " people"; 
+							result += " people";
 						};
 
 						return result;
@@ -494,17 +573,17 @@
 						return result;
 					})();
 
-					numberOfVisitors.innerHTML = totalNumberOfVisitors; 
-					totalCost.innerHTML = totalTicketsCost; 
+					numberOfVisitors.innerHTML = totalNumberOfVisitors;
+					totalCost.innerHTML = totalTicketsCost;
 
 					switch (visitTypeValue) {
 						case "free-admission": {
-							programsSection.classList.remove("main-page_subsection-block-hidden"); 
-							programsSection.classList.add("main-page_subsection-block-removed"); 
+							programsSection.classList.remove("main-page_subsection-block-hidden");
+							programsSection.classList.add("main-page_subsection-block-removed");
 
 							handlePseudoArray(visitorsAgeSection, (function(obj) {
-								obj.setAttribute("disabled", "disabled"); 
-							})); 
+								obj.setAttribute("disabled", "disabled");
+							}));
 
 							break;
 						}
@@ -513,60 +592,60 @@
 							programsSection.classList.remove("main-page_subsection-block-removed");
 
 							handlePseudoArray(visitorsAgeSection, (function(obj) {
-								obj.removeAttribute("disabled"); 
-							})); 
+								obj.removeAttribute("disabled");
+							}));
 
 							handlePseudoArray(programsSection, (function(obj) {
-								obj.removeAttribute("disabled"); 
-							})); 
+								obj.removeAttribute("disabled");
+							}));
 
 							switch (visitTimeValue) {
 								case "full-day": {
 									handlePseudoArray(fullDayProgramsSection, (function(obj) {
-										obj.removeAttribute("disabled"); 
-									})); 
+										obj.removeAttribute("disabled");
+									}));
 
 									handlePseudoArray(halfDayProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
-									break; 
+									break;
 								}
 
 								case "half-day": {
 									handlePseudoArray(fullDayProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
 									handlePseudoArray(halfDayProgramsSection, (function(obj) {
-										obj.removeAttribute("disabled"); 
-									})); 
+										obj.removeAttribute("disabled");
+									}));
 
-									break; 
+									break;
 								}
 							};
 
 							switch (visitorsAgeValue) {
 								case "younger-children":{
 									handlePseudoArray(adultsProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
 									handlePseudoArray(olderChildrenProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
 									break;
 								}
 
 								case "older-children": {
 									handlePseudoArray(adultsProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
 									handlePseudoArray(youngerChildrenProgramsSection, (function(obj) {
-										obj.setAttribute("disabled", "disabled"); 
-									})); 
+										obj.setAttribute("disabled", "disabled");
+									}));
 
 									break;
 								}
@@ -597,61 +676,58 @@
 
 						let formsValidity = false;
 
+						const showUserIssuesMessage = function() {
+							userIssuesWindow.classList.remove("display-hidden");
+							userIssuesMessage.innerHTML = "Please fill out all the forms correctly and try again!";
+						};
+
 						/*Check froms validity*/
 						const checkFormsValidation = (function() {
 							if (!userSetDate || (userSetDate <= currentDate)) {
-								visitDate.setCustomValidity("Please select a valid visit day!");
 								formsValidity = false;
-								return;
+								return showUserIssuesMessage();
 							} else {
-								visitDate.setCustomValidity("");
 								formsValidity = true;
 							};
 
 							if (totalNumberOfVisitors <= 0) {
-								numberOfAdults.setCustomValidity("Please enter at least one visitor!");
 								formsValidity = false;
-								return;
+								return showUserIssuesMessage();
 							} else {
-								visitDate.setCustomValidity("");
 								formsValidity = true;
 							};
 
 							handlePseudoArray(personalData, function(obj) {
-								if (obj.getAttribute("name") === "first-name" || "last-name") {
-									if (!obj.value || !obj.value.test(validName)) {
-										obj.setCustomValidity("Please enter a valid name!");
-										formsValidity = false;
-										return;
-									} else {
-										obj.setCustomValidity("");
-										formsValidity = true;
-									};
-								} else if (obj.getAttribute("name") === "telephone-number") {
-									if (!obj.value || !obj.value.test(validTelephone)) {
-										obj.setCustomValidity("Please enter a valid telephone number!");
-										formsValidity = false;
-										return;
-									} else {
-										obj.setCustomValidity("");
-										formsValidity = true;
-									};
+								if (obj.getAttribute("name")) {
+									if (obj.getAttribute("name") === "first-name" || "last-name") {
+										if (!obj.value || !validName.test(obj.value)) {
+											formsValidity = false;
+											return showUserIssuesMessage();
+										} else {
+											formsValidity = true;
+										};
+									} else if (obj.getAttribute("name") === "telephone-number") {
+										if (!obj.value || !validTelephone.test(obj.value)) {
+											formsValidity = false;
+											return showUserIssuesMessage();
+										} else {
+											formsValidity = true;
+										};
 
-								} else if (obj.getAttribute("name") === "email") {
-									if (!obj.value || !obj.value.test(validEmail)) {
-										obj.setCustomValidity("Please enter a valid email!");
-										formsValidity = false;
-										return;
-									} else {
-										obj.setCustomValidity("");
-										formsValidity = true;
+									} else if (obj.getAttribute("name") === "email") {
+										if (!obj.value || !validEmail.test(obj.value)) {
+											formsValidity = false;
+											return showUserIssuesMessage();
+										} else {
+											formsValidity = true;
+										};
 									};
-								}; 
-							}); 
+								};
+							});
 
-							/*If all forms are valid*/
-							if (formValidity) {
-								triggerNodeParrentWrapper.querySelector(".order-date").innerHTML = visitDateValue;
+							/* If all forms are valid */
+							if (formsValidity) {
+								triggerNodeParrentWrapper.querySelector(".order-date").innerHTML = visitDateValue;/*Check here*/
 								triggerNodeParrentWrapper.querySelector(".order-time").innerHTML = visitTimeValue;
 								triggerNodeParrentWrapper.querySelector(".order-visitors").innerHTML = totalNumberOfVisitors;
 								triggerNodeParrentWrapper.querySelector(".order-total-cost").innerHTML = totalTicketsCost;
@@ -661,7 +737,9 @@
 								};
 
 								return;
-							}; 
+							} else {
+								showUserIssuesMessage();
+							};
 						})();
 					};
 
@@ -694,14 +772,14 @@
 									if (!obj.parentNode.classList.contains("display-image-removed")) {
 										obj.parentNode.classList.add("display-image-removed");
 									};
-								}; 
+								};
 
 								if (obj.getAttribute("data-group") === targetImagesGroup) {
 									if (obj.parentNode.classList.contains("display-image-removed")) {
 										obj.parentNode.classList.remove("display-image-removed");
 									};
 								};
-							}; 
+							};
 						});
 
 						handleGallery(1, false, true);
@@ -713,8 +791,6 @@
 				}
 
 				case "show-image": {
-					let blurryScreen = document.getElementsByClassName("blurry-screen")[0];
-
 					if (
 						!targetNode.hasAttribute("data-state") || 
 						targetNode.getAttribute("data-state") !== "selected"
@@ -744,59 +820,22 @@
 
 					break;
 				}
+
+				case "user-issues-button": {
+					targetNode.classList.add("display-hidden");
+
+					break;
+				}
 			};
 
 			e.preventDefault();
 			e.stopPropagation();
 		};
 
+		handleGallery();
+
+		buttons = document.querySelectorAll('[data-type="button"]');
+
 		attachListeners(buttons, handleRelocations, "click");
-				 
-		/* Landing page slideshow */
-
-		const landingPageSlideShow = (function() {
-			const slides = document.getElementsByClassName("landing-page_slide");
-			const backgroundSlides = document.getElementsByClassName("landing-page_background");
-			const landingPageButton = document.getElementsByClassName("landing-page-button")[0];
-
-			let currentSlide = 0;
-			let currentBackgroundSlide = 0;
-
-			const generatePosition = function() {
-				let randX = Math.round(Math.random() * 100);
-				let randY = Math.round(Math.random() * 100);
-
-				return ("background-position: " + randX + "% " + randY + "%"); 
-			};
-
-			slides[currentSlide].setAttribute("style", generatePosition());
-			 
-			const goToSlide = function(n) {
-				slides[currentSlide].classList.remove("landing-page_slide-visible");
-				backgroundSlides[currentSlide].classList.remove("landing-page_background-visible");
-
-				currentSlide = (n + slides.length) % slides.length;
-
-				slides[currentSlide].classList.add("landing-page_slide-visible");
-				slides[currentSlide].setAttribute("style", generatePosition());
-				backgroundSlides[currentSlide].classList.add("landing-page_background-visible");
-			};
-			
-			const nextSlide = function() {
-				goToSlide(currentSlide + 1);
-			};
-
-			const slideInterval = setInterval(nextSlide, 4000);
-
-			landingPageButton.addEventListener("click", function() {
-				clearInterval(slideInterval);
-			}, false);
-		})();
-
-		/* Increase height of low-height pages */
-
-		const adjustSectionsHeight = (function() {
-
-		})();
 	};
 })();
