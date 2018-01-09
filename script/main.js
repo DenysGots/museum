@@ -27,7 +27,7 @@
 		/* Transform array-like object to array and apply function for each element */
 
 		const handlePseudoArray = function(arrayLikeObject, callBackFunction) {
-			if (typeof (NodeList.prototype.forEach) !== "function") {
+			if (typeof (NodeList.prototype.forEach) !== "function") {		// IE "NodeLists-to-Array" issues workaround
 				NodeList.prototype.forEach=Array.prototype.forEach;
 			};
 
@@ -113,7 +113,7 @@
 			galleryElements = document.getElementsByClassName("gallery_image");
 			galleryElementsContainers = document.getElementsByClassName("gallery_image-container");
 
-			if (!(/*@cc_on!@*/false || !!document.documentMode)) {		// IE node lists to array issues workaround
+			if (!(/*@cc_on!@*/false || !!document.documentMode)) {		// IE "NodeLists-to-Array" issues workaround
 				galleryElements = handlePseudoArray(galleryElements);
 				galleryElementsContainers = handlePseudoArray(galleryElementsContainers);
 			};
@@ -139,7 +139,7 @@
 				visibleGalleryElements = galleryElements.filter(function(obj) {
 					return (!obj.parentNode.classList.contains("display-image-removed"));
 				});
-			} else {		// IE node lists to array issues workaround
+			} else {		// IE "NodeLists-to-Array" issues workaround
 				visibleGalleryElements = {};
 
 				for (let prop in galleryElements) {
@@ -151,7 +151,7 @@
 
 			if (Array.isArray(visibleGalleryElements)) {
 				visibleGalleryElementsLength = visibleGalleryElements.length;
-			} else {		// IE node lists to array issues workaround
+			} else {		// IE "NodeLists-to-Array" issues workaround
 				let count = 0;
 
 				for (let prop in visibleGalleryElements) {
@@ -201,7 +201,7 @@
 						};
 					};
 			});
-			} else {		// IE node lists to array issues workaround
+			} else {		// IE "NodeLists-to-Array" issues workaround
 				let count = 0;
 
 				for (let prop in visibleGalleryElements) {
@@ -739,6 +739,7 @@
 						};
 
 						/*Check froms validity*/
+
 						const checkFormsValidation = (function() {
 							if (!userSetDate || (userSetDate <= currentDate)) {
 								formsValidity = false;
@@ -782,9 +783,10 @@
 								};
 							});
 
-							/* If all forms are valid */
+							/* Print message if all forms are valid or in case of any issues */
+
 							if (formsValidity) {
-								triggerNodeParrentWrapper.querySelector(".order-date").innerHTML = visitDateValue;/*Check here*/
+								triggerNodeParrentWrapper.querySelector(".order-date").innerHTML = visitDateValue;
 								triggerNodeParrentWrapper.querySelector(".order-time").innerHTML = visitTimeValue;
 								triggerNodeParrentWrapper.querySelector(".order-visitors").innerHTML = totalNumberOfVisitors;
 								triggerNodeParrentWrapper.querySelector(".order-total-cost").innerHTML = totalTicketsCost;
@@ -813,7 +815,7 @@
 				case "gallery-options": {
 					let galleryElements = targetNode.getElementsByClassName("gallery_image");
 
-					if (!(/*@cc_on!@*/false || !!document.documentMode)) {		// IE node lists to array issues workaround
+					if (!(/*@cc_on!@*/false || !!document.documentMode)) {		// IE "NodeLists-to-Array" issues workaround
 						galleryElements = handlePseudoArray(galleryElements);
 					};
 					
@@ -842,7 +844,7 @@
 									};
 								};
 							});
-						} else {		// IE node lists to array issues workaround
+						} else {		// IE "NodeLists-to-Array" issues workaround
 							for (let prop in galleryElements) {
 								if (galleryElements.propertyIsEnumerable(prop)) {
 									if (targetImagesGroup === "All") {
