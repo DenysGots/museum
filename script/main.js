@@ -139,8 +139,8 @@
       const galleryPagesContainer = document.getElementsByClassName("gallery_images_pages-container")[0];
       const galleryImagesSrc = "../images/Gallery/";
 
-      let galleryElements;
-      let galleryElementsContainers;
+      let galleryElements = document.getElementsByClassName("gallery_image");
+      let galleryElementsContainers = document.getElementsByClassName("gallery_image-container");
       let documentFragment;
       let galleryPage;
       let visibleGalleryElements;
@@ -151,16 +151,18 @@
       sortImages = (sortImages !== undefined) ? sortImages : true;
       handlePages = (handlePages !== undefined) ? handlePages : true;
 
-      galleryElements = document.getElementsByClassName("gallery_image");
-      galleryElementsContainers = document.getElementsByClassName("gallery_image-container");
-
       if (!(/*@cc_on!@*/false || !!document.documentMode)) {    // IE "NodeLists-to-Array" issues workaround
         galleryElements = handlePseudoArray(galleryElements);
         galleryElementsContainers = handlePseudoArray(galleryElementsContainers);
+
+        galleryElementsContainers.forEach(function(obj) {
+          if (obj.classList.contains("display-image-hidden")) {
+            obj.classList.remove("display-image-hidden")
+          };
+        });
       };
 
-      /* Randomize images sequence */
-      if (sortImages && Array.isArray(galleryElementsContainers)) {
+      if (sortImages && Array.isArray(galleryElementsContainers)) {    // Randomize images sequence
         galleryElementsContainers.sort(function(a, b) {
           return (Math.random() * galleryElements.indexOf(a) - Math.random() * galleryElements.indexOf(b));
         });
@@ -174,6 +176,9 @@
         });
 
         galleryImagesContainer.appendChild(documentFragment);
+
+        galleryElements = handlePseudoArray(document.getElementsByClassName("gallery_image"));
+        galleryElementsContainers = handlePseudoArray(document.getElementsByClassName("gallery_image-container"));
       };
 
       if (Array.isArray(galleryElements)) {
@@ -300,9 +305,9 @@
       sameNodeTypes = document.querySelectorAll('[data-type="'+targetType+'"]');
 
       switch (triggerNodeFunction) {
-        case "nav-button": {
+        case "nav-button": {     // Navigation buttons
           switch (targetType) {
-            case "interactive-block": {
+            case "interactive-block": {     // Secondary pages
               handlePseudoArray(sameNodeTypes, function(obj) {
                 if (!obj.classList.contains("display-hidden")) {
                   obj.classList.add("display-hidden");
@@ -323,7 +328,7 @@
               break;
             }
 
-            case "interactive-section": {
+            case "interactive-section": {     // Main page sections
               handlePseudoArray(siteSections, function(obj) {
                 obj.style.minHeight = 0;
               });
@@ -355,7 +360,7 @@
               break;
             }
 
-            case "interactive-header-section": {
+            case "interactive-header-section": {     // Header sections
               if (targetNode.classList.contains("display-hidden")) {
                 handlePseudoArray(targetNodes, function(obj) {
                   obj.classList.remove("display-hidden");
@@ -374,8 +379,8 @@
             }
           };
 
-          switch (triggerNodeSubfunction) {
-            case "search-button": {
+          switch (triggerNodeSubfunction) {     // Button subfunction
+            case "search-button": {     // Search button
               const searchableContent = handlePseudoArray(document.querySelectorAll('[data-searchable]'));
               const searchResultsSection = targetNode.getElementsByClassName("search-results-list")[0];
               const searchInputTextfield = document.getElementsByClassName("input_textfield-search")[0];
@@ -449,7 +454,7 @@
           break;
         }
 
-        case "slide-arrow": {
+        case "slide-arrow": {     // Change Slideshow slide left/right
           const slides = handlePseudoArray(targetNode.querySelectorAll('[data-name="slide"]'));
           const slidesLength = slides.length;
 
@@ -500,7 +505,7 @@
           break;
         }
 
-        case "interactive-tours-section": {
+        case "interactive-tours-section": {     // Buy tickets
           let triggerNodeParrent;
           let triggerNodeParrentWrapper;
           let triggerNodeNextSibling;
@@ -553,6 +558,16 @@
           if (triggerNodeNextSibling.classList.contains("main-page_subsection-block-removed")) {
             triggerNodeNextSibling.nextElementSibling.classList.remove("main-page_subsection-block-hidden");
           };
+
+          // /*TODO: not constructing selectors, try to remade*/
+          // const findElementsByAttribute = function(parrentNode, attributeName, attributeValue) {
+          //  if (attributeValue) {
+          //    return handlePseudoArray(parrentNode.querySelectorAll(`'[` + attributeName + `=` + `"` + attributeValue + `"` + `]'`));
+          //  } else {
+          //    return handlePseudoArray(parrentNode.querySelectorAll(`'[` + attributeName + `]'`));
+          //  };
+          // };
+          // /**/
 
           visitType = triggerNodeParrentWrapper.querySelector('[name="admission"]:checked');
           visitLength = triggerNodeParrentWrapper.querySelector('[name="days"]:checked');
@@ -805,14 +820,14 @@
           break;
         }
 
-        case "gallery-pagination": {
+        case "gallery-pagination": {     // Change gallery page
           const selectedPage = parseInt(triggerNode.getAttribute("data-page"));
           handleGallery(selectedPage, false, false);
 
           break;
         }
 
-        case "gallery-options": {
+        case "gallery-options": {     // Filter gallery images
           let galleryElements = targetNode.getElementsByClassName("gallery_image");
 
           if (!(/*@cc_on!@*/false || !!document.documentMode)) {    // IE "NodeLists-to-Array" issues workaround
@@ -876,7 +891,7 @@
           break;
         }
 
-        case "show-image": {
+        case "show-image": {     // Show/hide gallery full size image
           if (
             !targetNode.hasAttribute("data-state") ||
             targetNode.getAttribute("data-state") !== "selected"
@@ -897,7 +912,7 @@
           break;
         }
 
-        case "unblur-screen": {
+        case "unblur-screen": {     // Unblur screen
           let selectedImage = targetNode.querySelector('[data-state="selected"]');
 
           triggerNode.classList.add("display-hidden");
@@ -907,7 +922,7 @@
           break;
         }
 
-        case "user-issues-button": {
+        case "user-issues-button": {     // Close pop-up issues window
           targetNode.classList.add("display-hidden");
 
           break;
@@ -918,10 +933,10 @@
       e.stopPropagation();
     };
 
-    handleGallery();
+    handleGallery();     // Initialise gallery initial structure: images sequence and pagination
 
-    buttons = document.querySelectorAll('[data-type="button"]');
+    buttons = document.querySelectorAll('[data-type="button"]');     // Rewrite buttons NodeList after changes made to gallery
 
-    attachListeners(buttons, handleRelocations, "click");
+    attachListeners(buttons, handleRelocations, "click");     // Attach events listeners to buttons
   };
 })();
