@@ -13,6 +13,7 @@ Specified requirements:
 - Website content: sort, filter, site search 
 - Contacts page with Google maps link  
 - No back-end
+- Desktop layout only
 
 Project theme requirements: 
 - View Exhibitions and Events, Admission Schedule
