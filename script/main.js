@@ -137,7 +137,7 @@
     const handleGallery = function(currentPage, sortImages, handlePages) {
       const galleryImagesContainer = document.getElementsByClassName("gallery_images_preview")[0];
       const galleryPagesContainer = document.getElementsByClassName("gallery_images_pages-container")[0];
-      const galleryImagesSrc = "../images/Gallery/";
+      const galleryImagesSrc = "images/Gallery/";
 
       let galleryElements = document.getElementsByClassName("gallery_image");
       let galleryElementsContainers = document.getElementsByClassName("gallery_image-container");
